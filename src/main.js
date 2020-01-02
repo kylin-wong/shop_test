@@ -1,7 +1,7 @@
-// 导入vant.js的按需组件的信息
-// 导入vant.js里面的组件
 import Vue from 'vue'
+// 导入vant.js里面的组件
 import './plugins/vant.js'
+// APP根文件 Router Vuex
 import App from './App.vue'
 import router from './router'
 import store from './store'
