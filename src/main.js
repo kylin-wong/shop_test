@@ -20,6 +20,8 @@ import myComment from './components/myCommon/myComment.vue'
 Vue.component('my-header', myHeader)
 Vue.component('my-footer', myFooter)
 Vue.component('my-comment', myComment)
+axios.default.baseURL('http://www.liulongbin.top:3005/')
+
 // vue原型下挂载axios
 Vue.prototype.$http = axios
 
