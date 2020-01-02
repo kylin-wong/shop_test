@@ -1,6 +1,9 @@
 <template>
   <div>
+  <h5>
 
+<van-button type="info">信息按钮</van-button>
+  </h5>
   </div>
 </template>
 
