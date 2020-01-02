@@ -1,6 +1,6 @@
 // 导入vue
 import Vue from 'vue'
-import { Divider, Button, Row, Col, Search, Tag, Tab, Tabs, Lazyload, Image} from 'vant'
+import { Divider, Button, Row, Col, Search, Tag, Tab, Tabs, Lazyload, Image } from 'vant'
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
