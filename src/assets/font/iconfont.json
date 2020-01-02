@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1727458",
+      "name": "224用户-线性",
+      "font_class": "yonghu-xianxing",
+      "unicode": "e8c8",
+      "unicode_decimal": 59592
+    },
+    {
+      "icon_id": "7549348",
+      "name": "搜索",
+      "font_class": "RectangleCopy",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "11762549",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "12592401",
+      "name": "商城",
+      "font_class": "shangcheng",
+      "unicode": "e74b",
+      "unicode_decimal": 59211
+    },
+    {
+      "icon_id": "12592402",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e74c",
+      "unicode_decimal": 59212
+    }
+  ]
+}
