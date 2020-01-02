@@ -30,10 +30,8 @@ const routes = [
     component: Search
   },
   {
-    path: '/photo',
-    children: [
-      { path: 'list', component: PhotoList }
-    ]
+    path: '/photo/list',
+    component: PhotoList
   }
 ]
 
