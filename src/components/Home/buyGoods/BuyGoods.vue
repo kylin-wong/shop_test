@@ -71,7 +71,7 @@ export default {
     },
     skipIntroduce(id) {
       this.$router.push({
-        path: './home',
+        path: './goodsdesc',
         query: {
           id: id
         }
