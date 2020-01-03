@@ -1,8 +1,6 @@
 <template>
-  <div id="app">
-    <my-header></my-header>
-    <router-view />
-    <my-footer></my-footer>
+  <div>
+    123
   </div>
 </template>
 
@@ -16,5 +14,4 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

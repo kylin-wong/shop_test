@@ -1,24 +1,58 @@
 <template>
   <div>
-
+    <van-row>
+      <van-col :span="24">
+        <van-nav-bar
+          title="黑马程序员.vant"
+          :fixed="false"
+          ref="barRef"
+          @click-left="onClickLeft"
+        >
+          <div v-if="$store.state.toUrl !== '/home'" class="slotbox" slot="left">
+            <van-icon name="arrow-left" color="#fff" />返回
+          </div>
+        </van-nav-bar>
+      </van-col>
+    </van-row>
   </div>
 </template>
 
 <script>
+import {} from 'vuex'
 export default {
-  data () {
-    return {
-
-    }
+  data() {
+    return {}
   },
-  created () {
-
+  created() {
   },
   methods: {
-
+    onClickLeft() {
+      this.$router.go(-1)
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.van-nav-bar {
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  background-color: #1989fa;
+}
+.van-nav-bar__title,
+.van-nav-bar__text {
+  color: #fff;
+  font-size: 16px;
+}
+.slotbox {
+  display: flex;
+  align-items: center;
+}
+.van-nav-bar__left {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
 </style>

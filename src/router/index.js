@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store/index.js'
 import Home from '../components/Home/home.vue'
 import Member from '../components/Member/member.vue'
 import Shopcar from '../components/Shopcar/shopcar.vue'
@@ -8,8 +9,7 @@ import Newlist from '../components/Home/newlist/Newlist.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     redirect: '/home'
   },
@@ -30,8 +30,13 @@ const routes = [
     component: Search
   },
   //  新闻页面
-  { path: '/newlist',
+  {
+    path: '/newlist',
     component: Newlist
+  },
+  {
+    path: '/photo/list',
+    component: PhotoList
   }
 ]
 
@@ -39,4 +44,11 @@ const router = new VueRouter({
   routes
 })
 
+// 路由后置钩子
+router.afterEach((to, from) => {
+  console.log(to, from)
+  console.log(store)
+  store.commit('setFromUrl', from.path)
+  store.commit('setToUrl', to.path)
+})
 export default router
