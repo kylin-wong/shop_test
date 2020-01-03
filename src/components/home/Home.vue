@@ -27,7 +27,7 @@ export default {
       menu: [
         { text: '新闻资讯', pic: 'menu1.png', to: '/newlist' },
         { text: '图片分享', pic: 'menu2.png', to: '/photo/list' },
-        { text: '商品购买', pic: 'menu3.png', to: '/goods' },
+        { text: '商品购买', pic: 'menu3.png', to: '/home/goods' },
         { text: '留言反馈', pic: 'menu4.png' },
         { text: '视频专区', pic: 'menu5.png' },
         { text: '联系我们', pic: 'menu6.png' }

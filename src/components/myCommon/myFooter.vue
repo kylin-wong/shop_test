@@ -2,7 +2,7 @@
   <div>
     <van-tabbar v-model="active" @change="tabChange">
       <van-tabbar-item name="/home" icon="wap-home-o">首页</van-tabbar-item>
-      <van-tabbar-item name="/buyGoods" icon="user-o">会员</van-tabbar-item>
+      <van-tabbar-item name="/member" icon="user-o">会员</van-tabbar-item>
       <van-tabbar-item name="/shopcar" icon="shopping-cart-o" info="0">购物车</van-tabbar-item>
       <van-tabbar-item name="/search" icon="search">搜索</van-tabbar-item>
     </van-tabbar>
@@ -26,9 +26,6 @@ export default {
       console.log(this.active)
       this.$router.push(this.active)
     }
-    // getUrl() {
-    //   this.$store.commit('getUrl', this.$route.fullPath)
-    // }
   },
   computed: {
     ...mapState(['url']),

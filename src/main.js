@@ -10,6 +10,7 @@ import store from './store'
 
 // 导入字体图标
 import './assets/font/iconfont.css'
+
 // 导入axios
 import axios from 'axios'
 // 配置根路径
@@ -24,6 +25,25 @@ Vue.prototype.$http = axios
 // Vue.component('my-header', myHeader)
 // Vue.component('my-footer', myFooter)
 // Vue.component('my-comment', myComment)
+
+// 时间格式换
+Vue.filter('my-date', function dateFormat(date, fmt = 'YYYY-mm-dd') {
+  let ret
+  date = new Date(date)
+  let opt = {
+    'Y+': date.getFullYear().toString(), // 年
+    'm+': (date.getMonth() + 1).toString(), // 月
+    'd+': date.getDate().toString() // 日
+    // 有其他格式化字符需求可以继续添加，必须转化成字符串
+  }
+  for (let k in opt) {
+    ret = new RegExp('(' + k + ')').exec(fmt)
+    if (ret) {
+      fmt = fmt.replace(ret[1], ret[1].length === 1 ? opt[k] : opt[k].padStart(ret[1].length, '0'))
+    }
+  }
+  return '商品上架时间：' + fmt
+})
 
 // 整数转精度2位
 Vue.filter('my-filter', function returnFloat(value) {

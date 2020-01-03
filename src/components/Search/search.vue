@@ -11,7 +11,7 @@
         </form>
       </van-col>
     </van-row>
-    <van-row>
+    <van-row v-if="history">
       <van-col class="history"
                :span='24'>
         <div>搜索历史</div>
@@ -29,6 +29,16 @@
     <van-row class="nolist">
       <van-divider v-if="list.length===0">暂无搜索历史</van-divider>
     </van-row>
+    <van-row>
+      <van-col :span='24'>
+        <van-cell-group v-if="content">
+          <van-cell :title="item.name"
+                    v-for="(item) in search"
+                    :key="item.id"
+                    :value="item.ctime | my-date" />
+        </van-cell-group>
+      </van-col>
+    </van-row>
   </div>
 </template>
 
@@ -38,23 +48,43 @@ export default {
     return {
       value: '',
       list: [],
-      history: true
+      history: true,
+      search: [],
+      content: false,
+      str: '商品上传时间'
     }
   },
   created () {
-
   },
   methods: {
     onSearch () {
-      this.list.push(this.value)
-      this.history = false
+      if (this.value.trim() !== '') {
+        this.list.push(this.value)
+        this.get()
+        this.history = false
+        this.content = true
+      } else {
+        this.value = ''
+      }
     },
     onCancel () {
       this.value = ''
       this.history = true
+      this.content = false
     },
     del () {
       this.list = []
+    },
+    async get () {
+      let { data: res } = await this.$http.get(`api/getprodlist`)
+      console.log(res)
+      this.search = res.message
+    }
+  },
+  updated () {
+    if (this.value === '') {
+      this.content = false
+      this.history = true
     }
   }
 }
