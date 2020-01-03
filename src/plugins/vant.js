@@ -1,9 +1,32 @@
 // 导入vue
 import Vue from 'vue'
 
-import { Cell, CellGroup, SubmitBar, Sticky, Dialog, Divider, Button, Row, Col, Search, Tag, Card, Notify, Tab, Tabs, Lazyload, Image, Tabbar, Icon, TabbarItem, NavBar } from 'vant'
-Vue.use(Cell)
+import {
+  Cell,
+  CellGroup,
+  SubmitBar,
+  Sticky,
+  Dialog,
+  Divider,
+  Button,
+  Row,
+  Col,
+  Search,
+  Tag,
+  Card,
+  Notify,
+  Tab,
+  Tabs,
+  Lazyload,
+  Image,
+  Tabbar,
+  Icon,
+  TabbarItem,
+  NavBar,
+  Loading
+} from 'vant'
 Vue.use(CellGroup)
+Vue.use(Cell)
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
@@ -24,3 +47,8 @@ Vue.use(Lazyload)
 Vue.use(Image)
 Vue.prototype.Dialog = Dialog
 Vue.prototype.$message = Notify
+Vue.use(Tab).use(Tabs)
+Vue.use(Lazyload)
+Vue.use(Image)
+Vue.use(Notify)
+Vue.use(Loading)
