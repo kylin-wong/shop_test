@@ -8,7 +8,12 @@
     </van-swipe>
     <!-- 九宫格 -->
     <van-grid :column-num="3" :border="false" square>
-      <van-grid-item v-for="item in menu" :key="item.index" :text="item.text" :to="item.to">
+      <van-grid-item
+        v-for="item in menu"
+        :key="item.index"
+        :text="item.text"
+        :to="item.to"
+      >
         <template slot="icon">
           <div>
             <img :src="require(`@/assets/fpic/${item.pic}`)" />
@@ -54,11 +59,10 @@ export default {
   overflow: hidden;
   background: #eee;
 }
-// 自动剪裁图片的功能object-fit: cover
 .van-swipe img {
   width: 100%;
   height: 200px;
-  object-fit: cover!important
+  object-fit: cover !important;
 }
 .van-grid-item img {
   width: 60px;
@@ -69,6 +73,5 @@ export default {
 .dbTop {
   margin-top: 40px;
   height: 2000px;
-
 }
 </style>

@@ -4,6 +4,8 @@ import Home from '../components/Home/Home.vue'
 import Member from '../components/Member/member.vue'
 import Shopcar from '../components/Shopcar/shopcar.vue'
 import Search from '../components/Search/search.vue'
+import BuyGoods from '../components/Home/buyGoods/BuyGoods.vue'
+import MyComment from '../components/myCommon/myComment.vue'
 import Newlist from '../components/Home/newlist/Newlist.vue'
 import PhotoList from '../components/Photo/PhotoList.vue'
 import GoodsList from '../components/Home/buyGoods/GoodsList.vue'
@@ -38,6 +40,14 @@ const routes = [
   {
     path: '/newlist',
     component: Newlist
+  },
+  {
+    path: '/buyGoods',
+    component: BuyGoods
+  },
+  {
+    path: '/myComment',
+    component: MyComment
   },
   {
     path: '/photo/list',

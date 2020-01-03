@@ -2,17 +2,15 @@
 import Vue from 'vue'
 
 import {
-  Col,
-  Button,
-  Grid,
-  GridItem,
   Cell,
   CellGroup,
   SubmitBar,
   Sticky,
   Dialog,
   Divider,
+  Button,
   Row,
+  Col,
   Search,
   Tag,
   Card,
@@ -26,13 +24,18 @@ import {
   TabbarItem,
   NavBar,
   Loading,
-  PullRefresh,
-  List,
+  Stepper,
   Toast,
+  Grid,
+  GridItem,
   Swipe,
-  SwipeItem
+  SwipeItem,
+  PullRefresh
 } from 'vant'
-Vue.use(Grid)
+Vue.use(CellGroup)
+Vue.use(Cell)
+Vue.use(CellGroup)
+Vue.use(Button)
 Vue.use(Swipe)
 Vue.use(SwipeItem)
 Vue.use(GridItem)
@@ -66,6 +69,12 @@ Vue.use(Tab).use(Tabs)
 Vue.use(Lazyload)
 Vue.use(Notify)
 Vue.use(Loading)
-Vue.use(List)
-Vue.use(PullRefresh)
+Vue.use(Stepper)
 Vue.use(Toast)
+Vue.use(Divider)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Search)
+Vue.use(Tag)
+Vue.use(Tabbar)
+Vue.use(Grid)
