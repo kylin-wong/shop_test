@@ -9,11 +9,10 @@ import store from './store'
 
 import router from './router'
 
-// 导入字体图标
-import './assets/font/iconfont.css'
-
 // 导入axios
 import axios from 'axios'
+// 导入字体图标
+import './assets/font/iconfont.css'
 
 // 组件 头，尾，评论块
 import myHeader from './components/myCommon/myHeader.vue'

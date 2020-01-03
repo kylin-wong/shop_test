@@ -23,12 +23,12 @@ import {
   Icon,
   TabbarItem,
   NavBar,
+  Loading,
   PullRefresh,
-  Toast,
-  Loading
+  Toast
 } from 'vant'
-Vue.use(Cell)
 Vue.use(CellGroup)
+Vue.use(Cell)
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
@@ -52,3 +52,8 @@ Vue.use(Toast)
 Vue.use(Loading)
 Vue.prototype.Dialog = Dialog
 Vue.prototype.$message = Notify
+Vue.use(Tab).use(Tabs)
+Vue.use(Lazyload)
+Vue.use(Image)
+Vue.use(Notify)
+Vue.use(Loading)
