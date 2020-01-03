@@ -2,25 +2,25 @@
 import Vue from 'vue'
 
 import {
+  Button,
+  Image,
+  Row,
+  Icon,
+  Lazyload,
+  Divider,
+  Col,
+  Search,
+  Tabbar,
   Cell,
   CellGroup,
   SubmitBar,
   Sticky,
   Dialog,
-  Divider,
-  Button,
-  Row,
-  Col,
-  Search,
   Tag,
   Card,
   Notify,
   Tab,
   Tabs,
-  Lazyload,
-  Image,
-  Tabbar,
-  Icon,
   TabbarItem,
   NavBar,
   Loading,
@@ -40,6 +40,8 @@ Vue.use(GridItem)
 Vue.use(Cell)
 Vue.use(CellGroup)
 Vue.use(Button)
+Vue.use(Row)
+Vue.use(Tag)
 // Vue.use(Divider)
 Vue.use(Icon)
 Vue.use(TabbarItem)
@@ -53,15 +55,13 @@ Vue.use(PullRefresh)
 Vue.prototype.Dialog = Dialog
 Vue.prototype.$message = Notify
 Vue.use(Tab).use(Tabs)
-Vue.use(Lazyload)
 Vue.use(Notify)
+Vue.use(Lazyload)
 Vue.use(Loading)
 Vue.use(Stepper)
 Vue.use(Toast)
 Vue.use(Divider)
-Vue.use(Row)
 Vue.use(Col)
 Vue.use(Search)
-Vue.use(Tag)
 Vue.use(Tabbar)
 Vue.use(Grid)
