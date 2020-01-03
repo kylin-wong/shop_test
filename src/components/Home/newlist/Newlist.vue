@@ -52,7 +52,7 @@ export default {
     // 点击卡片让他跳转到响应的地方
     handel(id) {
       console.log(id)
-      this.$router.push({ path: `api/getnew/${id}`, params: { id: id } })
+      this.$router.push({ path: `api/getnew/${id}`, query: { id: id } })
     },
     onRefresh() {
       setTimeout(() => {
