@@ -7,11 +7,22 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+
+    }
   },
-  created() {},
-  methods: {}
+  created() {
+
+  },
+  methods: {
+
+  }
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.dbTop {
+  margin-top: 40px;
+  height: 2000px;
+}
+</style>
