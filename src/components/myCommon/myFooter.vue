@@ -11,7 +11,7 @@
         name="/shopcar"
         to="/shopcar"
         icon="shopping-cart-o"
-        info="0"
+        :info="$store.state.shopId.length"
         >购物车</van-tabbar-item
       >
       <van-tabbar-item name="/search" to="/search" icon="search"
