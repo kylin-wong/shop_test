@@ -7,7 +7,9 @@ import './plugins/vant.js'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import axios from 'axios'
+axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
+Vue.prototype.$http = axios
 // 导入字体图标
 import './assets/font/iconfont.css'
 
