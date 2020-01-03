@@ -20,11 +20,7 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home,
-    children: [{
-      path: 'goods',
-      component: GoodsList
-    }]
+    component: Home
   },
   {
     path: '/member',
@@ -46,6 +42,10 @@ const routes = [
   {
     path: '/photo/list',
     component: PhotoList
+  },
+  {
+    path: '/Home/goods',
+    component: GoodsList
   }
 ]
 
