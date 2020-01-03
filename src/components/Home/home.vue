@@ -1,23 +1,17 @@
 <template>
   <div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-
-    }
+    return {}
   },
-  created() {
-
-  },
-  methods: {
-
-  }
+  created() {},
+  methods: {}
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
