@@ -23,10 +23,6 @@ axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
 // 全局挂载
 Vue.prototype.$http = axios
 
-//   axios配置
-axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
-Vue.prototype.$http = axios
-
 // 时间格式换
 Vue.filter('my-date', function dateFormat(date, fmt = 'YYYY-mm-dd') {
   let ret

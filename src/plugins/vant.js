@@ -25,17 +25,22 @@ import {
   NavBar,
   Loading,
   Stepper,
-  Toast
+  Toast,
+  Grid,
+  GridItem,
+  Swipe,
+  SwipeItem
 } from 'vant'
 Vue.use(CellGroup)
 Vue.use(Cell)
+Vue.use(CellGroup)
 Vue.use(Button)
-Vue.use(Row)
-Vue.use(Col)
-Vue.use(Tag)
-Vue.use(Search)
-Vue.use(Divider)
-Vue.use(Tabbar)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
+Vue.use(Lazyload)
+Vue.use(Grid)
+Vue.use(GridItem)
+Vue.use(Image)
 Vue.use(Icon)
 Vue.use(TabbarItem)
 Vue.use(NavBar)
@@ -56,3 +61,9 @@ Vue.use(Notify)
 Vue.use(Loading)
 Vue.use(Stepper)
 Vue.use(Toast)
+Vue.use(Divider)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Search)
+Vue.use(Tag)
+Vue.use(Tabbar)

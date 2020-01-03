@@ -54,7 +54,7 @@ export default {
   overflow: hidden;
   background: #eee;
 }
-// 自动剪裁图片的功能object-fit: cover
+/* 自动剪裁图片的功能object-fit: cover */
 .van-swipe img {
   width: 100%;
   height: 200px;
