@@ -2,19 +2,19 @@
 import Vue from 'vue'
 
 import {
-  Search,
-  Divider,
-  Tabbar,
-  Col,
-  Row,
-  Button,
+  // Search,
+  // Divider,
+  // Tabbar,
+  // Col,
+  // Row,
+  // Button,
   Swipe,
   SwipeItem,
-  Lazyload,
+  // Lazyload,
   Grid,
   GridItem,
-  Image,
-  Icon,
+  // Image,
+  // Icon,
   Cell,
   CellGroup,
   SubmitBar,
@@ -34,13 +34,14 @@ import {
   Image,
   Tabbar,
   Icon,
-  TabbarItem,
-  NavBar,
-  Loading,
+  // TabbarItem,
+  // NavBar,
+  // Loading,
   PullRefresh,
   TabbarItem,
   NavBar,
-  Loading
+  Loading,
+  Toast
 } from 'vant'
 
 Vue.use(Grid)
@@ -60,7 +61,7 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Tag)
 Vue.use(Search)
-Vue.use(Divider)
+// Vue.use(Divider)
 Vue.use(Tabbar)
 Vue.use(Icon)
 Vue.use(TabbarItem)
