@@ -47,7 +47,7 @@ Vue.filter('my-date', function dateFormat(date, fmt = 'YYYY-mm-dd') {
 })
 
 // 整数转精度2位
-Vue.filter('my-filter', function returnFloat(value) {
+Vue.filter('myfilter', function returnFloat(value) {
   var val = Math.round(parseFloat(value) * 100) / 100
   var xsd = value.toString().split('.')
   if (xsd.length === 1) {
