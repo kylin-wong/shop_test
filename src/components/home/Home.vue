@@ -1,6 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
     <!-- 轮播图 -->
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in images" :key="index">
@@ -17,16 +16,12 @@
         </template>
       </van-grid-item>
     </van-grid>
-=======
-    <router-view></router-view>
->>>>>>> 91343ce747dc65862e19a5fb3ee6fdd55f9c1ead
   </div>
 </template>
 
 <script>
 export default {
   data() {
-<<<<<<< HEAD
     return {
       images: [],
       menu: [
@@ -77,13 +72,3 @@ export default {
 
 }
 </style>
-=======
-    return {}
-  },
-  created() {},
-  methods: {}
-}
-</script>
-
-<style lang="less" scoped></style>
->>>>>>> 91343ce747dc65862e19a5fb3ee6fdd55f9c1ead
