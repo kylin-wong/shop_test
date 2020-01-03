@@ -13,7 +13,7 @@
       <hr />
       <van-cell-group>
         <van-field
-          v-model="comment.content"
+          v-model="val"
           rows="1"
           :autosize="falg"
           type="textarea"
@@ -21,7 +21,7 @@
         />
       </van-cell-group>
       <van-button type="info" size="large" @click="add">发表评论</van-button>
-      <div v-for="(items, i) in comment" :key="i" v-show="key < num">
+      <div v-for="(items, i) in comment" :key="i">
         <div class="infos">
           <span>第{{ i + 1 }}楼</span>
           <span class="user">用户 : {{ items.user_name }}</span>
@@ -41,40 +41,52 @@ export default {
   data() {
     return {
       DetailList: [],
+      val: '',
       falg: { maxHeight: 150, minHeight: 70 },
       comment: [],
       isShow: true,
-      txt: '加载中...',
-      num: 2
+      txt: '加载更多',
+      num: 5
     }
   },
   created() {
-    this.getDetailList()
-    this.getMoment()
+    let path = this.$route.path
+    var newsId = path.substring(path.length - 2, path.length)
+    // console.log(path, newsId)
+    // console.log(1)
+    this.getDetailList(newsId)
+    this.getMoment(newsId)
   },
   methods: {
-    async getDetailList() {
-      console.log(this.$route.query)
+    async getDetailList(id) {
+      console.log(id)
 
-      const { data: res } = await this.$http.get('api/getnew/43')
+      const { data: res } = await this.$http.get(`api/getnew/${id}`)
       if (res.status === 1) return false
       this.DetailList = res.message
       // console.log(this.DetailList)
     },
-    async getMoment() {
+    async getMoment(id) {
+      console.log(id)
       const { data: res } = await this.$http.get(
-        'api/getcomments/13?pageindex=1'
+        `api/getcomments/${id}?pageindex=1`
       )
       this.comment = res.message
       // console.log(this.comment)
     },
     async add() {
-      if (this.comment.content === 0) return this.$toast('留言不能为空')
+      if (this.val === '') return this.$toast('留言不能为空')
+      const { data: res } = await this.$http.post('api/postcomment/43', {
+        content: this.val
+      })
+      if (res.status !== 0) return this.$toast('评论提交失败!')
+      this.getMoment()
+      this.$toast('评论提交成功!')
     },
     showMore() {
       this.isShow = !this.isShow
-      this.num = this.isShow ? 2 : this.comment.length
-      this.txt = this.isShow ? '加载中...' : '收起'
+      this.num = this.isShow ? (this.num += 5) : this.num
+      // this.txt = this.isShow ? '加载更多' : '收起'
     }
   }
 }
@@ -83,7 +95,7 @@ export default {
 <style lang="less" scoped>
 h3 {
   color: #1989fa;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   text-align: center;
 }
@@ -122,9 +134,11 @@ h3 {
 }
 p {
   text-indent: 2em;
+  margin: 0 10px 0 10px;
 }
 .btn {
   border: 1px solid #ff4444;
   color: #ff4444;
+  margin-bottom: 50px;
 }
 </style>
