@@ -12,10 +12,16 @@
       <h4>发表评论</h4>
       <hr />
       <van-cell-group>
-        <van-field v-model="comment.content" rows="1" :autosize="falg" type="textarea" placeholder="请输入留言" />
+        <van-field
+          v-model="comment.content"
+          rows="1"
+          :autosize="falg"
+          type="textarea"
+          placeholder="请输入留言"
+        />
       </van-cell-group>
       <van-button type="info" size="large" @click="add">发表评论</van-button>
-      <div v-for="(items, i) in comment" :key="i">
+      <div v-for="(items, i) in comment" :key="i" v-show="key < num">
         <div class="infos">
           <span>第{{ i + 1 }}楼</span>
           <span class="user">用户 : {{ items.user_name }}</span>
@@ -23,6 +29,9 @@
         </div>
         <div class="commtets">{{ items.content }}</div>
       </div>
+      <van-button class="btn" size="large" @click="showMore">{{
+        txt
+      }}</van-button>
     </div>
   </div>
 </template>
@@ -33,7 +42,10 @@ export default {
     return {
       DetailList: [],
       falg: { maxHeight: 150, minHeight: 70 },
-      comment: []
+      comment: [],
+      isShow: true,
+      txt: '加载中...',
+      num: 2
     }
   },
   created() {
@@ -48,12 +60,19 @@ export default {
       // console.log(this.DetailList)
     },
     async getMoment() {
-      const { data: res } = await this.$http.get('api/getcomments/13?pageindex=1')
+      const { data: res } = await this.$http.get(
+        'api/getcomments/13?pageindex=1'
+      )
       this.comment = res.message
       // console.log(this.comment)
     },
     async add() {
-      if (this.comment.content === '') return this.$toast('留言不能为空')
+      if (this.comment.content === 0) return this.$toast('留言不能为空')
+    },
+    showMore() {
+      this.isShow = !this.isShow
+      this.num = this.isShow ? 2 : this.comment.length
+      this.txt = this.isShow ? '加载中...' : '收起'
     }
   }
 }
@@ -101,5 +120,9 @@ h3 {
 }
 p {
   text-indent: 2em;
+}
+.btn {
+  border: 1px solid #ff4444;
+  color: #ff4444;
 }
 </style>

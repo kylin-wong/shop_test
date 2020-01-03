@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  state: {}
-})
-=======
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -31,4 +21,3 @@ export default new Vuex.Store({
   modules: {
   }
 })
->>>>>>> eb6fdab1377999f2f1dc60601f67ff5469119002
