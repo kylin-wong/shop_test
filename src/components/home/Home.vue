@@ -3,7 +3,7 @@
     <!-- 轮播图 -->
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image.img" class="myimg" />
+        <img v-lazy="image.img"  />
       </van-swipe-item>
     </van-swipe>
     <!-- 九宫格 -->
@@ -54,9 +54,11 @@ export default {
   overflow: hidden;
   background: #eee;
 }
-.myimg {
+// 自动剪裁图片的功能object-fit: cover
+.van-swipe img {
   width: 100%;
   height: 200px;
+  object-fit: cover!important
 }
 .van-grid-item img {
   width: 60px;
