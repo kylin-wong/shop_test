@@ -1,7 +1,7 @@
 <template>
-  <div class="newbox">
-    <!-- 头部 -->
-    <div></div>
+  <div>
+    <!-- 头部
+    <div></div> -->
     <!-- 卡片区域 -->
     <van-loading
       size="24px"
@@ -9,28 +9,37 @@
       type="spinner"
       color="#1989fa"
     ></van-loading>
+    <!-- 上拉刷新 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <!-- <div slot="default"></div> -->
-      <div v-for="(item, index) in getnewlist" :key="index">
-        <van-card
-          class="crad-caint"
-          currency=""
-          :title="item.title"
-          @click="handel(item.id)"
-          :lazy-load="true"
-        >
-          <div slot="thumb" class="card-box">
-            <img class="card-img" :src="item.img_url" alt="" />
-          </div>
-          <div slot="price" class="color">
-            发布时间:{{ item.add_time | dataFormat }}
-          </div>
-          <div slot="num" class="color">点击:{{ item.click }}</div>
-        </van-card>
-      </div>
+      <!-- 下拉刷新 -->
+      <van-list
+        v-model="loading"
+        :finished="finished"
+        finished-text="没有更多了"
+        @load="onLoad"
+        class="onloading"
+      >
+        <!-- <div slot="default"></div> -->
+
+        <div v-for="(item, index) in getnewlist" :key="index">
+          <van-card
+            class="crad-caint"
+            currency=""
+            :title="item.title"
+            @click="handel(item.id)"
+            :lazy-load="true"
+          >
+            <div slot="thumb" class="card-box">
+              <img class="card-img" :src="item.img_url" alt="" />
+            </div>
+            <div slot="price" class="color">
+              发布时间:{{ item.add_time | dataFormat }}
+            </div>
+            <div slot="num" class="color">点击:{{ item.click }}</div>
+          </van-card>
+        </div>
+      </van-list>
     </van-pull-refresh>
-    <!--尾部  -->
-    <div></div>
   </div>
 </template>
 
@@ -40,7 +49,9 @@ export default {
     return {
       // 获取新闻的所有数据
       getnewlist: [],
-      isLoading: false
+      isLoading: false,
+      finished: false,
+      loading: false
     }
   },
   created() {
@@ -55,6 +66,7 @@ export default {
     // 发起请求获取新闻的数据
     async getNewlist() {
       const { data: res } = await this.$http.get('/api/getnewslist')
+
       console.log(res)
       if (res.status !== 0) {
         return false
@@ -72,6 +84,13 @@ export default {
         this.$toast('刷新成功')
         this.isLoading = false
       }, 1000)
+    },
+    onLoad() {
+      // 异步更新数据
+      setTimeout(() => {
+        this.finished = true
+        this.getNewlist()
+      }, 500)
     }
   }
 }
@@ -116,5 +135,8 @@ export default {
   min-height: 50px;
   height: 50%;
   justify-content: space-around;
+}
+.van-list {
+  margin-bottom: 40px;
 }
 </style>

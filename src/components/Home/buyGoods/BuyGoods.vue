@@ -53,20 +53,23 @@ export default {
   },
   methods: {
     async getshopcarlist() {
-      const { data: res } = await this.$http.get('api/goods/getshopcarlist/87')
+      const id = this.$route.query.id
+      const { data: res } = await this.$http.get('api/goods/getshopcarlist/' + id)
+      if (res.status === 1) return this.$message({ message: '获取信息失败1', type: 'danger', duration: 1000 })
       this.goodsMessage = res.message[0]
     },
     addShopNum(event) {
       this.shopNum = event
     },
     async getShopInfo() {
-      const { data: res } = await this.$http.get('api/goods/getinfo/87')
+      const id = this.$route.query.id
+      const { data: res } = await this.$http.get('api/goods/getinfo/' + id)
+      console.log(res)
+      if (res.status === 1) return this.$message({ message: '获取信息失败2', type: 'danger', duration: 1000 })
       this.ShopInfo = res.message[0]
-      console.log(this.ShopInfo)
     },
     addCar(id) {
-      console.log(id)
-      this.$store.commit('carList', id)
+      this.$store.commit('carList', { id: id, num: this.shopNum })
       this.$toast.success('已加入购物车')
     },
     skipIntroduce(id) {
@@ -133,6 +136,7 @@ export default {
     margin-right: 10px;
 }
 .arguments {
+     margin-bottom: 50px;
     padding: 15px 15px 0;
     border: 1px solid #ccc;
     color: #818181;
@@ -169,7 +173,7 @@ export default {
 }
 .arguments .comment {
     border: 1px solid #ee0a24;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #ee0a24;
 }
 </style>
