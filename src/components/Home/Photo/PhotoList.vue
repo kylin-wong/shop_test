@@ -6,16 +6,19 @@
     </van-tabs>
     <!-- 全部图片区域 -->
     <ul class="img_list">
-      <li v-for="item in getImges" :key="item.id" class="box">
-        <van-image width="100%" height="300px" :src="item.img_url" lazy-load fit="cover" radius="5px"> </van-image>
+      <!-- 将图片数组中的数据遍历渲染到页面 -->
+      <li v-for="item in getImges" :key="item.id" class="box" @click="jumpImg(item.id)">
+        <van-image width="100%" height="300px" :src="item.img_url" lazy-load fit="cover" radius="5px">
+          <template>
+            <van-loading type="spinner" color="#1989fa" />
+          </template>
+        </van-image>
         <div class="botInfo">
           <p>{{ item.title }}</p>
           <p>{{ item.zhaiyao }}</p>
         </div>
       </li>
     </ul>
-
-    <!-- 其他图片区域 -->
   </div>
 </template>
 
@@ -50,14 +53,19 @@ export default {
     },
     async getImages(id) {
       const { data: res } = await this.$http.get(`/api/getimages/${this.id}`)
+      // 将获取的图片数据放图数组中
       this.getImges = res.message
       // console.log(res.message)
     },
     // tab栏发生改变时触发
     getImgList(index) {
+      // 将被点击的分类的 id 赋值给data的id
       this.id = this.ImgCategory[index].id
+      // 调用获取图片 将分类的id 放入重新获取图片
       this.getImages(this.id)
-      console.log(this.id)
+    },
+    jumpImg(id) {
+      this.$router.push('/photo/Info/' + id)
     }
   }
 }
