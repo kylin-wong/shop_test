@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="newbox">
     <!-- 头部 -->
     <div></div>
     <!-- 卡片区域 -->
@@ -52,7 +52,7 @@ export default {
     // 点击卡片让他跳转到响应的地方
     handel(id) {
       console.log(id)
-      this.$router.push({ path: `api/getnew/${id}`, params: { id: id } })
+      this.$router.push({ path: `api/getnew/${id}`, query: { id: id } })
     },
     onRefresh() {
       setTimeout(() => {
@@ -65,6 +65,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.newbox{
+  height: 800px;
+}
 .van-card {
   background: #fff;
   border-bottom: 1px solid #eee;
