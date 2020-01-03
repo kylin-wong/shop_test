@@ -1,6 +1,6 @@
 // 导入vue
 import Vue from 'vue'
-import { Divider, Button, Row, Col, Search, Tag, Tabbar, Icon, TabbarItem, NavBar } from 'vant'
+import { SubmitBar, Sticky, Dialog, Divider, Button, Row, Col, Search, Tag, Card, Notify, Tab, Tabs, Lazyload, Image, Tabbar, Icon, TabbarItem, NavBar } from 'vant'
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
@@ -11,3 +11,14 @@ Vue.use(Tabbar)
 Vue.use(Icon)
 Vue.use(TabbarItem)
 Vue.use(NavBar)
+Vue.use(Card)
+Vue.use(Notify)
+Vue.use(SubmitBar)
+Vue.use(Sticky)
+
+Vue.use(Dialog)
+Vue.prototype.Dialog = Dialog
+Vue.prototype.$message = Notify
+Vue.use(Tab).use(Tabs)
+Vue.use(Lazyload)
+Vue.use(Image)

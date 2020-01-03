@@ -1,17 +1,17 @@
 <template>
   <div>
-    welcome
+    123
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
 
     }
   },
-  created() {
+  created () {
 
   },
   methods: {
@@ -21,8 +21,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.dbTop {
-  margin-top: 40px;
-  height: 2000px;
-}
 </style>
