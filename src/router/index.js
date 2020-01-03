@@ -40,10 +40,10 @@ const router = new VueRouter({
 })
 
 // 路由后置钩子
-router.afterEach((to, from) => {
-  console.log(to, from)
-  console.log(store)
-  store.commit('setFromUrl', from.path)
-  store.commit('setToUrl', to.path)
-})
+// router.afterEach((to, from) => {
+//   console.log(to, from)
+//   console.log(store)
+//   store.commit('setFromUrl', from.path)
+//   store.commit('setToUrl', to.path)
+// })
 export default router
