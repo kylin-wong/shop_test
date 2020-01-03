@@ -28,18 +28,28 @@ import {
   GridItem,
   PullRefresh,
   List,
-  Toast
+  Toast,
+  Swipe,
+  SwipeItem
 } from 'vant'
 Vue.use(CellGroup)
 Vue.use(Cell)
-Vue.use(Button)
 Vue.use(Row)
-Vue.use(Col)
-Vue.use(Tag)
-Vue.use(Search)
 Vue.use(Divider)
+Vue.use(Col)
+Vue.use(Search)
+Vue.use(Tag)
 Vue.use(Tabbar)
+
+Vue.use(Button)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
+Vue.use(Lazyload)
+Vue.use(Grid)
+Vue.use(GridItem)
+Vue.use(Image)
 Vue.use(Icon)
+
 Vue.use(TabbarItem)
 Vue.use(NavBar)
 Vue.use(Card)
@@ -48,6 +58,7 @@ Vue.use(SubmitBar)
 Vue.use(Sticky)
 Vue.use(Dialog)
 Vue.use(Tab).use(Tabs)
+
 Vue.use(Lazyload)
 Vue.use(Image)
 Vue.prototype.Dialog = Dialog

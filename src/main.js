@@ -12,20 +12,16 @@ import axios from 'axios'
 axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
 Vue.prototype.$http = axios
 
-// // 导入字体图标
-// import './assets/font/iconfont.css'
+// 导入字体图标
+import './assets/font/iconfont.css'
 
-// // 组件 头，尾，评论块
-// import myHeader from './components/myCommon/myHeader.vue'
-// import myFooter from './components/myCommon/myFooter.vue'
-// import myComment from './components/myCommon/myComment.vue'
-// Vue.component('my-header', myHeader)
-// Vue.component('my-footer', myFooter)
-// Vue.component('my-comment', myComment)
-
-//   axios配置
-axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
-Vue.prototype.$http = axios
+// 组件 头，尾，评论块
+import myHeader from './components/myCommon/myHeader.vue'
+import myFooter from './components/myCommon/myFooter.vue'
+import myComment from './components/myCommon/myComment.vue'
+Vue.component('my-header', myHeader)
+Vue.component('my-footer', myFooter)
+Vue.component('my-comment', myComment)
 
 // 时间格式换
 Vue.filter('my-date', function dateFormat(date, fmt = 'YYYY-mm-dd') {
