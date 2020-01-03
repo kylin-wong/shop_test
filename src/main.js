@@ -5,8 +5,8 @@ import './plugins/vant.js'
 
 // APP根文件 Router Vuex
 import App from './App.vue'
-import router from './router'
 import store from './store'
+import router from './router'
 
 // 导入axios
 import axios from 'axios'
