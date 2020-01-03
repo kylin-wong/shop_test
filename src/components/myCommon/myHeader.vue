@@ -2,7 +2,16 @@
   <div>
     <van-row>
       <van-col :span="24">
-        <van-nav-bar title="黑马程序员.vant" :fixed="true" :left-text="$store.state.url === '/home' ? '' : '返回'" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+        <van-nav-bar
+          title="黑马程序员.vant"
+          :fixed="false"
+          ref="barRef"
+          @click-left="onClickLeft"
+        >
+          <div v-if="$store.state.toUrl !== '/home'" class="slotbox" slot="left">
+            <van-icon name="arrow-left" color="#fff" />返回
+          </div>
+        </van-nav-bar>
       </van-col>
     </van-row>
   </div>
@@ -14,13 +23,12 @@ export default {
   data() {
     return {}
   },
-  created() {},
+  created() {
+  },
   methods: {
     onClickLeft() {
       this.$router.go(-1)
-      this.$store.commit('getUrl', this.$route.fullPath)
-    },
-    onClickRight() {}
+    }
   }
 }
 </script>
@@ -29,13 +37,22 @@ export default {
 .van-nav-bar {
   width: 100%;
   text-align: center;
+  line-height: 40px;
   height: 40px;
   background-color: #1989fa;
 }
 .van-nav-bar__title,
 .van-nav-bar__text {
-  line-height: 40px;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
+}
+.slotbox {
+  display: flex;
+  align-items: center;
+}
+.van-nav-bar__left {
+  display: flex;
+  align-items: center;
+  color: #fff;
 }
 </style>
