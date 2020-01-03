@@ -20,37 +20,37 @@
 
 <script>
 export default {
-  props: ['id'],
+  props: ["id"],
   data() {
     return {
       commentsList: [],
-      content: '',
+      content: "",
       pageSize: 1
     };
   },
   methods: {
     async getComments() {
-      const { data: res } = await this.axios(
-        '/api/getcomments/' + this.id + '?pageindex=' + this.pageSize
+      const {data: res} = await this.axios(
+        "/api/getcomments/" + this.id + "?pageindex=" + this.pageSize
       );
-      if (res.status !== 0) return this.$toast('请求服务器失败')
+      if(res.status != 0) return this.$toast('请求服务器失败')
       this.commentsList = res.message;
     },
     async loadMore() {
         this.pageSize++;
-        const { data: res } = await this.axios(
-        '/api/getcomments/' + this.id + '?pageindex=' + this.pageSize
+        const {data: res} = await this.axios(
+        "/api/getcomments/" + this.id + "?pageindex=" + this.pageSize
       );
-      if (res.status !== 0) return this.$toast('请求服务器失败')
+      if(res.status != 0) return this.$toast('请求服务器失败')
       this.commentsList.push(...res.message);
     },
     async addComment() {
-        if (this.content.trim() === '') return this.$toast('留言不能为空')
-        const { data: res } = await this.axios.post('/api/postcomment/' + this.id, { content: this.content })
+        if(this.content.trim() == '') return this.$toast('留言不能为空')
+        const {data: res} = await this.axios.post('/api/postcomment/' + this.id, {content: this.content})
         console.log(res);
-        if (res.status !== 0) return this.$toast('请求服务器失败')
+        if(res.status != 0) return this.$toast('请求服务器失败')
         this.$toast('评论成功');
-        this.content = '';
+        this.content = "";
         this.getComments()
     }
   },

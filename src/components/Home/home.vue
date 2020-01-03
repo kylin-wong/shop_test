@@ -1,27 +1,34 @@
 <template>
   <div>
-  <h5>
-
-<van-button type="info">信息按钮</van-button>
-  </h5>
+    搜索列表
   </div>
 </template>
 
 <script>
 export default {
+
   data () {
     return {
-
     }
   },
-  created () {
 
-  },
   methods: {
+    async getlist() {
+      console.log('nihao');
+      
+      var res = await this.axios.get('/api/getprodlist')
 
+      
+      console.log(res)
+    }
+  },
+
+  created () {
+    this.getlist()
   }
 }
 </script>
 
-<style lang="less" scoped>
+<style lang='less' scoped>
+
 </style>
