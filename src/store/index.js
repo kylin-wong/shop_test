@@ -11,7 +11,11 @@ export default new Vuex.Store({
   },
   mutations: {
     carList(state, step) {
-      state.shopId.push(step)
+      const obj = {
+        id: step.id,
+        num: step.num
+      }
+      state.shopId.push(obj)
       console.log(state.shopId)
     },
     setFromUrl(state, step) {

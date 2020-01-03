@@ -36,6 +36,7 @@ export default {
     async getComments() {
       const id = this.$route.query.id
       const { data: res } = await this.$http.get(`api/getcomments/${id}?pageindex=${this.pageindex}`)
+      if (res.status === 1) return this.$message({ message: '获取评论信息失败', type: 'danger', duration: 1000 })
       res.message.forEach(item => {
         item.add_time = item.add_time.substring(0, 10)
       })
@@ -44,7 +45,7 @@ export default {
     async addComment() {
       const id = this.$route.query.id
       const { data: res } = await this.$http.post(`api/postcomment/${id}`, { content: this.textValue })
-      console.log(res)
+      if (res.status === 1) return this.$message({ message: '发表评论失败', type: 'danger', duration: 1000 })
     }
   }
 }
