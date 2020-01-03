@@ -34,6 +34,21 @@ export default new Vuex.Store({
     },
     setToUrl(state, step) {
       state.toUrl = step
+    },
+    addnum(state, id) {
+      console.log('====================================')
+      console.log(id)
+      console.log('====================================')
+      let i = state.shopId.findIndex(item => (item.id = id))
+      state.shopId[i].num++
+    },
+    cutnum(state, id) {
+      console.log('====================================')
+      console.log(id)
+      console.log('====================================')
+      let i = state.shopId.findIndex(item => (item.id = id))
+      state.shopId[i].num--
+      console.log(state.shopId[i].num)
     }
   },
   actions: {},

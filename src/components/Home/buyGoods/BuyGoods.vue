@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       goodsMessage: {},
-      shopNum: '',
+      shopNum: 1,
       ShopInfo: {}
     }
   },
