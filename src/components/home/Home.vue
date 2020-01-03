@@ -3,7 +3,7 @@
     <!-- 轮播图 -->
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image.img"  />
+        <img v-lazy="image.img" />
       </van-swipe-item>
     </van-swipe>
     <!-- 九宫格 -->
@@ -64,5 +64,11 @@ export default {
   width: 60px;
   height: 60px;
   padding-bottom: 8px;
+}
+
+.dbTop {
+  margin-top: 40px;
+  height: 2000px;
+
 }
 </style>
