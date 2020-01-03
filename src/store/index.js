@@ -5,12 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    url: '/home'
+    fromUrl: '/home',
+    toUrl: '/'
   },
   mutations: {
-    getUrl(state, step) {
-      state.url = step
-      console.log(state.url)
+    setFromUrl(state, step) {
+      state.fromUrl = step
+    },
+    setToUrl(state, step) {
+      state.toUrl = step
     }
   },
   actions: {
