@@ -24,8 +24,7 @@ import {
   TabbarItem,
   NavBar,
   Loading,
-  PullRefresh,
-  Toast
+  PullRefresh
 } from 'vant'
 Vue.use(CellGroup)
 Vue.use(Cell)
