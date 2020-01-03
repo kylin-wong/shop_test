@@ -13,11 +13,13 @@
           <van-button
             round
             size="mini"
-            @click="numList[index] == 1 ? confirm(item) : numList[index]--"
+            @click="numList[index] == 1 ? confirm(item) : cut(item.id, index)"
             >-</van-button
           >
           <span>{{ numList[index] }}</span>
-          <van-button round size="mini" @click="numList[index]++">+</van-button>
+          <van-button round size="mini" @click="add(item.id, index)"
+            >+</van-button
+          >
         </div>
       </van-card>
     </div>
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -40,16 +43,33 @@ export default {
     }
   },
   created() {
+    console.log('====================================')
+    console.log(this.$store.state.shopId)
+    console.log(this.$store.state.shop)
+    console.log('====================================')
     this.idList = this.$store.state.shopId.reduce((p, c, i, arr) => {
       return p + ',' + c.id
     }, '')
-    this.$store.state.shopId.map((item, index) => {
-      this.numList.push(item.num)
-    })
+    this.getNumList()
     console.log(this.numList)
     this.get()
   },
   methods: {
+    ...mapMutations(['addnum', 'cutnum']),
+    add(id, index) {
+      this.addnum(id)
+      this.getNumList()
+    },
+    cut(id, index) {
+      this.cutnum(id)
+      this.getNumList()
+    },
+    getNumList() {
+      this.numList = []
+      this.$store.state.shopId.map((item, index) => {
+        this.numList.push(item.num)
+      })
+    },
     async get() {
       let { data: res } = await this.$http.get(
         `api/goods/getshopcarlist/${this.idList}`
@@ -81,8 +101,8 @@ export default {
     // 总价
     price() {
       return (
-        this.list.reduce((p, c) => {
-          return p + c.sell_price * c.cou
+        this.list.reduce((p, c, i, arr) => {
+          return p + c.sell_price * this.numList[i]
         }, 0) * 100
       )
     }

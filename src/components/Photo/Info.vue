@@ -81,11 +81,13 @@ p {
   overflow: hidden;
 }
 .time {
+  margin: 0 10px;
   float: left;
   font-size: 13px;
   color: #8f8f94;
 }
 .click {
+  margin: 0 10px;
   float: right;
   font-size: 13px;
   color: #8f8f94;
@@ -105,5 +107,9 @@ ul {
       box-shadow: 1px 0 8px 1px rgba(0, 0, 0, 0.3);
     }
   }
+}
+.detail-content{
+  margin: 0 10px;
+  text-indent: 2em
 }
 </style>

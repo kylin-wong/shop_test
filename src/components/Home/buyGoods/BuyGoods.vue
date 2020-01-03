@@ -13,7 +13,7 @@
             <p>市场价： <s>{{'￥' + ShopInfo.market_price}}</s> 销售价： <span>{{'￥' + ShopInfo.sell_price}}</span></p>
             <div class="buy_num">
               <span>购买数量</span>
-              <van-stepper :value="shopNum" min="0" @change="addShopNum" />
+              <van-stepper :value="shopNum" min="1" @change="addShopNum" />
             </div>
           </div>
           <van-button type="info" size="small">立即购买</van-button>
@@ -28,7 +28,7 @@
           <ul>
             <li><span>商品货号:</span>{{ShopInfo.goods_no}}</li>
             <li><span>库存情况:</span>{{ShopInfo.stock_quantity}}件</li>
-            <li><span>上架时间:</span>{{ShopInfo.add_time}}</li>
+            <li><span>上架时间:</span>{{ShopInfo.add_time | dataFormat}}</li>
           </ul>
           <button class="introduce" @click="skipIntroduce(ShopInfo.id)">图文介绍</button>
           <button class="comment" @click="skipComment(ShopInfo.id)">商品评论</button>
@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       goodsMessage: {},
-      shopNum: '',
+      shopNum: 1,
       ShopInfo: {}
     }
   },
@@ -55,7 +55,7 @@ export default {
     async getshopcarlist() {
       const id = this.$route.query.id
       const { data: res } = await this.$http.get('api/goods/getshopcarlist/' + id)
-      if (res.status === 1) return this.$message({ message: '获取信息失败1', type: 'danger', duration: 1000 })
+      if (res.status === 1) return this.$message({ message: '获取信息失败', type: 'danger', duration: 1000 })
       this.goodsMessage = res.message[0]
     },
     addShopNum(event) {
@@ -65,7 +65,7 @@ export default {
       const id = this.$route.query.id
       const { data: res } = await this.$http.get('api/goods/getinfo/' + id)
       console.log(res)
-      if (res.status === 1) return this.$message({ message: '获取信息失败2', type: 'danger', duration: 1000 })
+      if (res.status === 1) return this.$message({ message: '获取信息失败', type: 'danger', duration: 1000 })
       this.ShopInfo = res.message[0]
     },
     addCar(id) {
@@ -74,7 +74,7 @@ export default {
     },
     skipIntroduce(id) {
       this.$router.push({
-        path: './home',
+        path: './goodsdesc',
         query: {
           id: id
         }

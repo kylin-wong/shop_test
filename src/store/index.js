@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     shopId: [],
+    shop: [],
     fromUrl: '/home',
     toUrl: '/'
   },
@@ -15,6 +16,16 @@ export default new Vuex.Store({
         id: step.id,
         num: step.num
       }
+      if (state.shop.indexOf(step.id) !== -1) {
+        state.shopId.forEach(item => {
+          if (item.id === step.id) {
+            item.num = step.num
+          }
+        })
+        console.log(state.shopId)
+        return false
+      }
+      state.shop.push(step.id)
       state.shopId.push(obj)
       console.log(state.shopId)
     },
@@ -23,6 +34,21 @@ export default new Vuex.Store({
     },
     setToUrl(state, step) {
       state.toUrl = step
+    },
+    addnum(state, id) {
+      console.log('====================================')
+      console.log(id)
+      console.log('====================================')
+      let i = state.shopId.findIndex(item => (item.id = id))
+      state.shopId[i].num++
+    },
+    cutnum(state, id) {
+      console.log('====================================')
+      console.log(id)
+      console.log('====================================')
+      let i = state.shopId.findIndex(item => (item.id = id))
+      state.shopId[i].num--
+      console.log(state.shopId[i].num)
     }
   },
   actions: {},
