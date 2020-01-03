@@ -2,6 +2,19 @@
 import Vue from 'vue'
 
 import {
+  Search,
+  Divider,
+  Tabbar,
+  Col,
+  Row,
+  Button,
+  Swipe,
+  SwipeItem,
+  Lazyload,
+  Grid,
+  GridItem,
+  Image,
+  Icon,
   Cell,
   CellGroup,
   SubmitBar,
@@ -24,8 +37,22 @@ import {
   TabbarItem,
   NavBar,
   Loading,
-  PullRefresh
+  PullRefresh,
+  TabbarItem,
+  NavBar,
+  Loading
 } from 'vant'
+
+Vue.use(Grid)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
+Vue.use(GridItem)
+Vue.use(Divider)
+Vue.use(Search)
+Vue.use(Tabbar)
+Vue.use(Col)
+Vue.use(Row)
+Vue.use(Cell)
 Vue.use(CellGroup)
 Vue.use(Cell)
 Vue.use(Button)

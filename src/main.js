@@ -11,18 +11,18 @@ import router from './router'
 
 // 导入axios
 import axios from 'axios'
+
+// 组件 头，尾，评论块
+import myHeader from './components/myCommon/myHeader.vue'
+import myFooter from './components/myCommon/myFooter.vue'
+import myComment from './components/myCommon/myComment.vue'
 // 配置根路径
 axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
 // 全局挂载axios
 Vue.prototype.$http = axios
-
-// 组件 头，尾，评论块
-// import myHeader from './components/myCommon/myHeader.vue'
-// import myFooter from './components/myCommon/myFooter.vue'
-// import myComment from './components/myCommon/myComment.vue'
-// Vue.component('my-header', myHeader)
-// Vue.component('my-footer', myFooter)
-// Vue.component('my-comment', myComment)
+Vue.component('my-header', myHeader)
+Vue.component('my-footer', myFooter)
+Vue.component('my-comment', myComment)
 
 // 时间格式换
 Vue.filter('my-date', function dateFormat(date, fmt = 'YYYY-mm-dd') {
@@ -37,7 +37,10 @@ Vue.filter('my-date', function dateFormat(date, fmt = 'YYYY-mm-dd') {
   for (let k in opt) {
     ret = new RegExp('(' + k + ')').exec(fmt)
     if (ret) {
-      fmt = fmt.replace(ret[1], ret[1].length === 1 ? opt[k] : opt[k].padStart(ret[1].length, '0'))
+      fmt = fmt.replace(
+        ret[1],
+        ret[1].length === 1 ? opt[k] : opt[k].padStart(ret[1].length, '0')
+      )
     }
   }
   return '商品上架时间：' + fmt
