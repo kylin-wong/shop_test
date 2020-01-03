@@ -25,8 +25,6 @@ export default new Vuex.Store({
       state.toUrl = step
     }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  modules: {}
 })

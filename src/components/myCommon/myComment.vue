@@ -2,17 +2,23 @@
   <div>
     <div class="comment">
       <h3>发表评论</h3>
-      <textarea v-model="textValue" name="" id="" rows="4" placeholder="请输入评论信息..."></textarea>
+      <textarea
+        v-model="textValue"
+        name=""
+        id=""
+        rows="4"
+        placeholder="请输入评论信息..."
+      ></textarea>
       <button @click="addComment">发表评论</button>
       <ul>
         <li v-for="(item, index) in commentsList" :key="index">
           <div class="user">
-            <span>第{{index + 1}}楼</span>
-            <span>用户: {{item.user_name}}</span>
-            <span>发表时间: {{item.add_time}}</span>
+            <span>第{{ index + 1 }}楼</span>
+            <span>用户: {{ item.user_name }}</span>
+            <span>发表时间: {{ item.add_time }}</span>
           </div>
           <p>
-            {{item.content}}
+            {{ item.content }}
           </p>
         </li>
       </ul>
@@ -22,14 +28,14 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       pageindex: 1,
       commentsList: [],
       textValue: ''
     }
   },
-  created () {
+  created() {
     this.getComments()
   },
   methods: {

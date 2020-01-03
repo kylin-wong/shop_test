@@ -90,7 +90,10 @@ export default {
       this.getImages(this.id)
     },
     jumpImg(id) {
-      this.$router.push('/photo/Info/' + id)
+      this.$router.push({
+        path: '/photo/Info/' + id,
+        query: { id }
+      })
     }
   }
 }
