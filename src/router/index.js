@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/Home/home.vue'
+import Home from '../components/Home/Home.vue'
 import Member from '../components/Member/member.vue'
 import Shopcar from '../components/Shopcar/shopcar.vue'
 import Search from '../components/Search/search.vue'
