@@ -6,10 +6,12 @@ import Member from '../components/Member/member.vue'
 import Shopcar from '../components/Shopcar/shopcar.vue'
 import Search from '../components/Search/search.vue'
 import Newlist from '../components/Home/newlist/Newlist.vue'
+import PhotoList from '../components/Home/Photo/PhotoList.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
     path: '/',
     redirect: '/home'
   },

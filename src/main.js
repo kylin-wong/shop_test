@@ -6,12 +6,8 @@ import './plugins/vant.js'
 // APP根文件 Router Vuex
 import App from './App.vue'
 import store from './store'
-<<<<<<< HEAD
-// 导入axios
-import axios from 'axios'
-=======
+
 import router from './router'
->>>>>>> 0339af3b6cfe368ab59ba2c194144abc14019d99
 
 // 导入字体图标
 import './assets/font/iconfont.css'
