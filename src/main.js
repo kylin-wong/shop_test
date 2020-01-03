@@ -10,14 +10,17 @@ import store from './store'
 
 // 导入字体图标
 import './assets/font/iconfont.css'
-
+// 导入axios
+import axios from 'axios'
 // 组件 头，尾，评论块
 import myHeader from './components/myCommon/myHeader.vue'
 import myFooter from './components/myCommon/myFooter.vue'
-import myComment from './components/myCommon/myComment.vue'
 Vue.component('my-header', myHeader)
 Vue.component('my-footer', myFooter)
-Vue.component('my-comment', myComment)
+// 配置根路径
+axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
+// 全局挂载
+Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
 
