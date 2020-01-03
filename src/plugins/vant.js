@@ -1,6 +1,6 @@
 // 导入vue
 import Vue from 'vue'
-import { SubmitBar, Sticky, Dialog, Divider, Button, Row, Col, Search, Tag, Card, Notify, Tab, Tabs, Lazyload, Image } from 'vant'
+import { SubmitBar, Sticky, Dialog, Divider, Button, Row, Col, Search, Tag, Card, Notify, Tab, Tabs, Lazyload, Image, Field, cellGroup, Toast } from 'vant'
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
@@ -11,6 +11,9 @@ Vue.use(Card)
 Vue.use(Notify)
 Vue.use(SubmitBar)
 Vue.use(Sticky)
+Vue.use(Field)
+Vue.use(cellGroup)
+Vue.use(Toast)
 
 Vue.use(Dialog)
 Vue.prototype.Dialog = Dialog

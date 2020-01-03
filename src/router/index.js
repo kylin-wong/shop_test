@@ -5,6 +5,7 @@ import Member from '../components/Member/member.vue'
 import Shopcar from '../components/Shopcar/shopcar.vue'
 import Search from '../components/Search/search.vue'
 import PhotoList from '../components/Home/Photo/PhotoList.vue'
+import Detail from '../components/news/detail.vue'
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,10 @@ const routes = [
   {
     path: '/photo/list',
     component: PhotoList
+  },
+  {
+    path: '/detail',
+    component: Detail
   }
 ]
 
