@@ -1,8 +1,39 @@
 // 导入vue
 import Vue from 'vue'
 
-import { Button, Swipe, SwipeItem, Lazyload, Grid, GridItem, Image, Icon, Cell, CellGroup, SubmitBar, Sticky, Dialog, Card, Notify, Tab, Tabs, TabbarItem, NavBar, Loading } from 'vant'
+import {
+  Search,
+  Divider,
+  Tabbar,
+  Col,
+  Row,
+  Button,
+  Swipe,
+  SwipeItem,
+  Lazyload,
+  Grid,
+  GridItem,
+  Image,
+  Icon,
+  Cell,
+  CellGroup,
+  SubmitBar,
+  Sticky,
+  Dialog,
+  Card,
+  Notify,
+  Tab,
+  Tabs,
+  TabbarItem,
+  NavBar,
+  Loading
+} from 'vant'
 
+Vue.use(Divider)
+Vue.use(Search)
+Vue.use(Tabbar)
+Vue.use(Col)
+Vue.use(Row)
 Vue.use(Cell)
 Vue.use(CellGroup)
 
