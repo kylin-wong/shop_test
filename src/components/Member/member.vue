@@ -21,12 +21,12 @@ div {
   color: black;
   margin-top: 15px;
 }
-// 图标要使用动画
+/* 图标要使用动画 */
 .van-icon {
   font-size: 25px;
   animation: move 2s linear 0s infinite normal none running;
 }
-// 调用动画,旋转
+/* 调用动画,旋转 */
 @keyframes move {
   from {
     transform: rotate(0deg);
