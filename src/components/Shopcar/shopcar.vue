@@ -35,15 +35,17 @@ export default {
   data () {
     return {
       list: [],
-      checked: false
+      checked: false,
+      idList: ''
     }
   },
   created () {
+    this.idList = this.$store.state.shopId.join(',')
     this.get()
   },
   methods: {
     async get () {
-      let { data: res } = await this.$http.get(`api/goods/getshopcarlist/87,88,89`)
+      let { data: res } = await this.$http.get(`api/goods/getshopcarlist/${this.idList}`)
       if (res.status !== 0) return this.$message({ type: 'error', message: '获取失败' })
       this.list = res.message
       console.log(res)

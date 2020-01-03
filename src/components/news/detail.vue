@@ -54,6 +54,8 @@ export default {
   },
   methods: {
     async getDetailList() {
+      console.log(this.$route.query)
+
       const { data: res } = await this.$http.get('api/getnew/43')
       if (res.status === 1) return false
       this.DetailList = res.message

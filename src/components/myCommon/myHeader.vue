@@ -1,10 +1,10 @@
 <template>
   <div>
-    <van-row>
+    <van-row class="indent">
       <van-col :span="24">
         <van-nav-bar
           title="黑马程序员.vant"
-          :fixed="false"
+          :fixed="true"
           ref="barRef"
           @click-left="onClickLeft"
         >
@@ -14,6 +14,7 @@
         </van-nav-bar>
       </van-col>
     </van-row>
+    <van-row :style="{height:h}"></van-row>
   </div>
 </template>
 
@@ -21,9 +22,12 @@
 import {} from 'vuex'
 export default {
   data() {
-    return {}
+    return {
+      h: ''
+    }
   },
-  created() {
+  mounted() {
+    this.h = this.$refs.barRef.offsetHeight - 1 + 'px'
   },
   methods: {
     onClickLeft() {
@@ -54,5 +58,8 @@ export default {
   display: flex;
   align-items: center;
   color: #fff;
+}
+.van-nav-bar--fixed{
+  z-index: 99 !important;
 }
 </style>
