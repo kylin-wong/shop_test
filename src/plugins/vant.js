@@ -30,9 +30,11 @@ import {
   GridItem,
   Swipe,
   SwipeItem,
-  PullRefresh
+  PullRefresh,
+  List
 } from 'vant'
 Vue.use(CellGroup)
+Vue.use(List)
 Vue.use(Cell)
 Vue.use(CellGroup)
 Vue.use(Button)
