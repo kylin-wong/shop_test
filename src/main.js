@@ -6,9 +6,8 @@ import './plugins/vant.js'
 // APP根文件 Router Vuex
 import App from './App.vue'
 import store from './store'
-import router from './router'
 
-// 导入axios
+import router from './router'
 import axios from 'axios'
 // 导入字体图标
 import './assets/font/iconfont.css'
@@ -36,7 +35,10 @@ Vue.filter('my-date', function dateFormat(date, fmt = 'YYYY-mm-dd') {
   for (let k in opt) {
     ret = new RegExp('(' + k + ')').exec(fmt)
     if (ret) {
-      fmt = fmt.replace(ret[1], ret[1].length === 1 ? opt[k] : opt[k].padStart(ret[1].length, '0'))
+      fmt = fmt.replace(
+        ret[1],
+        ret[1].length === 1 ? opt[k] : opt[k].padStart(ret[1].length, '0')
+      )
     }
   }
   return '商品上架时间：' + fmt
@@ -59,7 +61,21 @@ Vue.filter('my-filter', function returnFloat(value) {
 })
 
 Vue.config.productionTip = false
+// 设置根路径
+axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
+Vue.prototype.$http = axios
+// 时间过滤器
+Vue.filter('dataFormat', function (originVal) {
+  const dt = new Date(originVal)
+  const y = dt.getFullYear()
+  const m = (dt.getMonth() + 1 + '').padStart(2, '0')
+  const d = (dt.getDate() + '').padStart(2, '0')
+  const hh = (dt.getHours() + '').padStart(2, '0')
+  const mm = (dt.getMinutes() + '').padStart(2, '0')
+  const ss = (dt.getSeconds() + '').padStart(2, '0')
 
+  return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+})
 new Vue({
   router,
   store,
