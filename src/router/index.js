@@ -4,6 +4,7 @@ import Home from '../components/Home/home.vue'
 import Member from '../components/Member/member.vue'
 import Shopcar from '../components/Shopcar/shopcar.vue'
 import Search from '../components/Search/search.vue'
+import Newlist from '../components/Home/newlist/Newlist.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,10 @@ const routes = [
   {
     path: '/search',
     component: Search
+  },
+  //  新闻页面
+  { path: '/newlist',
+    component: Newlist
   }
 ]
 
