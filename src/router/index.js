@@ -9,6 +9,7 @@ import MyComment from '../components/myCommon/myComment.vue'
 import Newlist from '../components/Home/newlist/Newlist.vue'
 import PhotoList from '../components/Photo/PhotoList.vue'
 import GoodsList from '../components/Home/buyGoods/GoodsList.vue'
+import Detail from '../components/news/detail.vue'
 
 // store  VUEX文件引入
 import store from '../store/index.js'
@@ -56,6 +57,10 @@ const routes = [
   {
     path: '/Home/goods',
     component: GoodsList
+  },
+  {
+    path: '/news/detail',
+    component: Detail
   }
 ]
 
