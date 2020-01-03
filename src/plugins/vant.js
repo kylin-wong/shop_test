@@ -23,7 +23,12 @@ import {
   Icon,
   TabbarItem,
   NavBar,
-  Loading
+  Loading,
+  Grid,
+  GridItem,
+  PullRefresh,
+  List,
+  Toast
 } from 'vant'
 Vue.use(CellGroup)
 Vue.use(Cell)
@@ -49,6 +54,10 @@ Vue.prototype.Dialog = Dialog
 Vue.prototype.$message = Notify
 Vue.use(Tab).use(Tabs)
 Vue.use(Lazyload)
-Vue.use(Image)
 Vue.use(Notify)
 Vue.use(Loading)
+Vue.use(List)
+Vue.use(Grid)
+Vue.use(GridItem)
+Vue.use(PullRefresh)
+Vue.use(Toast)

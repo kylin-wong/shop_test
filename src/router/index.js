@@ -6,6 +6,7 @@ import Member from '../components/Member/member.vue'
 import Shopcar from '../components/Shopcar/shopcar.vue'
 import Search from '../components/Search/search.vue'
 import PhotoList from '../components/Photo/PhotoList.vue'
+import GoodsList from '../components/Home/buyGoods/GoodsList.vue'
 
 Vue.use(VueRouter)
 
@@ -16,7 +17,11 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    children: [{
+      path: 'goods',
+      component: GoodsList
+    }]
   },
   {
     path: '/member',

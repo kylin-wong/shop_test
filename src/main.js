@@ -7,19 +7,21 @@ import './plugins/vant.js'
 import App from './App.vue'
 import store from './store'
 import router from './router'
-
-// 导入axios
 import axios from 'axios'
-// 导入字体图标
-import './assets/font/iconfont.css'
+// 配置请求的根路径
+axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
+Vue.prototype.$http = axios
 
-// 组件 头，尾，评论块
-import myHeader from './components/myCommon/myHeader.vue'
-import myFooter from './components/myCommon/myFooter.vue'
-import myComment from './components/myCommon/myComment.vue'
-Vue.component('my-header', myHeader)
-Vue.component('my-footer', myFooter)
-Vue.component('my-comment', myComment)
+// // 导入字体图标
+// import './assets/font/iconfont.css'
+
+// // 组件 头，尾，评论块
+// import myHeader from './components/myCommon/myHeader.vue'
+// import myFooter from './components/myCommon/myFooter.vue'
+// import myComment from './components/myCommon/myComment.vue'
+// Vue.component('my-header', myHeader)
+// Vue.component('my-footer', myFooter)
+// Vue.component('my-comment', myComment)
 
 //   axios配置
 axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
