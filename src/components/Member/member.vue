@@ -1,40 +1,21 @@
 <template>
   <div>
-<<<<<<< HEAD
     <van-icon name="setting-o" />
     <p>正在加班加点开发中,敬请期待!</p>
-=======
-
->>>>>>> 0339af3b6cfe368ab59ba2c194144abc14019d99
   </div>
 </template>
 
 <script>
 export default {
-<<<<<<< HEAD
   data() {
     return {}
   },
   created() {},
   methods: {}
-=======
-  data () {
-    return {
-
-    }
-  },
-  created () {
-
-  },
-  methods: {
-
-  }
->>>>>>> 0339af3b6cfe368ab59ba2c194144abc14019d99
 }
 </script>
 
 <style lang="less" scoped>
-<<<<<<< HEAD
 div {
   text-align: center;
   color: black;
@@ -54,6 +35,4 @@ div {
     transform: rotate(360deg);
   }
 }
-=======
->>>>>>> 0339af3b6cfe368ab59ba2c194144abc14019d99
 </style>
