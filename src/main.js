@@ -8,9 +8,6 @@ import App from './App.vue'
 import store from './store'
 import router from './router'
 
-// 导入字体图标
-import './assets/font/iconfont.css'
-
 // 导入axios
 import axios from 'axios'
 // 配置根路径
