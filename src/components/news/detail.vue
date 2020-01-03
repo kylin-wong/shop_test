@@ -1,38 +1,44 @@
 <template>
   <div>
-    <div v-for="(item, index) in DetailList" :key="index">
-      <h3>{{ item.title }}</h3>
-      <div class="info">
-        <span>发表时间 : {{ item.add_time | dateFormat }}</span>
-        <span>点击次数 : {{ item.click }}</span>
-      </div>
-      <p v-html="item.content"></p>
-    </div>
-    <div class="footer">
-      <h4>发表评论</h4>
-      <hr />
-      <van-cell-group>
-        <van-field
-          v-model="val"
-          rows="1"
-          :autosize="falg"
-          type="textarea"
-          placeholder="请输入留言"
-        />
-      </van-cell-group>
-      <van-button type="info" size="large" @click="add">发表评论</van-button>
-      <div v-for="(items, i) in comment" :key="i">
-        <div class="infos">
-          <span>第{{ i + 1 }}楼</span>
-          <span class="user">用户 : {{ items.user_name }}</span>
-          <span>发表时间 : {{ items.add_time | dateFormat }}</span>
+    <van-pull-refresh
+      v-model="isLoading"
+      success-text="刷新成功"
+      @refresh="onRefresh"
+    >
+      <div v-for="(item, index) in DetailList" :key="index">
+        <h3>{{ item.title }}</h3>
+        <div class="info">
+          <span>发表时间 : {{ item.add_time | dateFormat }}</span>
+          <span>点击次数 : {{ item.click }}</span>
         </div>
-        <div class="commtets">{{ items.content }}</div>
+        <p v-html="item.content"></p>
       </div>
-      <van-button class="btn" size="large" @click="showMore">{{
-        txt
-      }}</van-button>
-    </div>
+      <div class="footer">
+        <h4>发表评论</h4>
+        <hr />
+        <van-cell-group>
+          <van-field
+            v-model="val"
+            rows="1"
+            :autosize="falg"
+            type="textarea"
+            placeholder="请输入留言"
+          />
+        </van-cell-group>
+        <van-button type="info" size="large" @click="add">发表评论</van-button>
+        <div v-for="(items, i) in comment" :key="i">
+          <div class="infos">
+            <span>第{{ i + 1 }}楼</span>
+            <span class="user">用户 : {{ items.user_name }}</span>
+            <span>发表时间 : {{ items.add_time | dateFormat }}</span>
+          </div>
+          <div class="commtets">{{ items.content }}</div>
+        </div>
+        <van-button class="btn" size="large" @click="showMore">{{
+          txt
+        }}</van-button>
+      </div>
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -46,7 +52,8 @@ export default {
       comment: [],
       isShow: true,
       txt: '加载更多',
-      num: 5
+      num: 5,
+      isLoading: false
     }
   },
   created() {
@@ -87,6 +94,11 @@ export default {
       this.isShow = !this.isShow
       this.num = this.isShow ? (this.num += 5) : this.num
       // this.txt = this.isShow ? '加载更多' : '收起'
+    },
+    onRefresh() {
+      setTimeout(() => {
+        this.isLoading = false
+      }, 500)
     }
   }
 }
