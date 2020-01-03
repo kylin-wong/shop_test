@@ -1,19 +1,21 @@
 <template>
   <div>
     <!-- 标签页 -->
-    <van-tabs line-width="40px" swipeable :duration="0.2">
+    <van-tabs line-width="40px" swipeable :duration="0.2" v-model="activeName" @change="getImgList">
       <van-tab v-for="item in ImgCategory" :title="item.title" :key="item.id"> </van-tab>
-      <!-- 图片区域 -->
-      <ul class="img_list">
-        <li v-for="item in getImges" :key="item.id" class="box">
-          <van-image width="100%" height="300px" :src="item.img_url" lazy-load fit="cover" radius="5px"> </van-image>
-          <div class="botInfo">
-            <p>{{ item.title }}</p>
-            <p>{{ item.zhaiyao }}</p>
-          </div>
-        </li>
-      </ul>
     </van-tabs>
+    <!-- 全部图片区域 -->
+    <ul class="img_list">
+      <li v-for="item in getImges" :key="item.id" class="box">
+        <van-image width="100%" height="300px" :src="item.img_url" lazy-load fit="cover" radius="5px"> </van-image>
+        <div class="botInfo">
+          <p>{{ item.title }}</p>
+          <p>{{ item.zhaiyao }}</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- 其他图片区域 -->
   </div>
 </template>
 
@@ -22,9 +24,12 @@ export default {
   data() {
     return {
       activeName: 0,
+      // 获得图片分类数组
       ImgCategory: [],
+      // 获得图片数组
       getImges: [],
-      cateId: 0
+      id: 0
+      // 保存图片分类
     }
   },
   created() {
@@ -43,10 +48,16 @@ export default {
       this.ImgCategory = res.message
       // console.log(this.ImgCategory)
     },
-    async getImages() {
-      const { data: res } = await this.$http.get(`/api/getimages/${this.cateId}`)
+    async getImages(id) {
+      const { data: res } = await this.$http.get(`/api/getimages/${this.id}`)
       this.getImges = res.message
-      console.log(res.message)
+      // console.log(res.message)
+    },
+    // tab栏发生改变时触发
+    getImgList(index) {
+      this.id = this.ImgCategory[index].id
+      this.getImages(this.id)
+      console.log(this.id)
     }
   }
 }
