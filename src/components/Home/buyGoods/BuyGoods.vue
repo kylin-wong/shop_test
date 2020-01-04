@@ -2,7 +2,11 @@
   <div>
     <van-row>
       <van-col span="24" class="shop_img">
-        <van-image :src="goodsMessage.thumb_path" width="100%" height="100%" radius="5px" />
+        <van-swipe :autoplay="3000">
+          <van-swipe-item v-for="(item, index) in goodsMessage" :key="index">
+            <img v-lazy="item.thumb_path" style="width: 100%;height: 100%;" />
+          </van-swipe-item>
+        </van-swipe>
       </van-col>
     </van-row>
     <van-row>
@@ -42,7 +46,7 @@
 export default {
   data() {
     return {
-      goodsMessage: {},
+      goodsMessage: [],
       shopNum: 1,
       ShopInfo: {}
     }
@@ -56,7 +60,7 @@ export default {
       const id = this.$route.query.id
       const { data: res } = await this.$http.get('api/goods/getshopcarlist/' + id)
       if (res.status === 1) return this.$message({ message: '获取信息失败', type: 'danger', duration: 1000 })
-      this.goodsMessage = res.message[0]
+      this.goodsMessage = res.message
     },
     addShopNum(event) {
       this.shopNum = event
@@ -96,8 +100,9 @@ export default {
 .van-col {
     padding: 15px 6px 0;
 }
-.van-image {
+.van-swipe {
     border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .van-image {
     vertical-align: middle;
