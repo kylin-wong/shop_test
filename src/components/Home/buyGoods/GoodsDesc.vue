@@ -33,7 +33,9 @@ export default {
       if (res.status !== 0) {
         return this.$toast.fail('获取失败!')
       }
+      res.message[0].content = res.message[0].content.replace(/br/g, 'p')
       this.GoodsDescList = res.message
+      console.log(res.message)
     }
   }
 }
@@ -48,7 +50,7 @@ h4 {
 }
 
 .box {
-    overflow: hidden;
-    margin: 0 5px;
+  overflow: hidden;
+  margin: 0 5px;
 }
 </style>
