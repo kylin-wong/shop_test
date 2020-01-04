@@ -32,15 +32,7 @@ import {
   SwipeItem,
   PullRefresh,
   List,
-<<<<<<< HEAD
-  Search,
-  Col,
-  Row,
-  Divider,
-  Button
-=======
   Field
->>>>>>> f6ee2456abfcdea665a6a099559a68847174bfaa
 } from 'vant'
 Vue.use(Field)
 Vue.use(List)
