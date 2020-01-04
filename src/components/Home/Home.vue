@@ -16,7 +16,7 @@
       >
         <template slot="icon">
           <div>
-            <img :src="require(`@/assets/fpic/${item.pic}`)" />
+            <img :src="require(`@/../public/fpic/${item.pic}`)" />
           </div>
         </template>
       </van-grid-item>
