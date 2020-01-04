@@ -15,7 +15,7 @@
           >
             <van-icon name="arrow-left" color="#fff" />返回
           </div>
-          <div slot="right" v-if="$store.state.toUrl === '/search'">
+          <div slot="right" v-if="$store.state.toUrl === '/search'||'/add'">
             <span class="add" @click="add">添加</span>
           </div>
         </van-nav-bar>
