@@ -1,43 +1,46 @@
 <template>
   <div>
-    <!-- 标签页 -->
-    <van-tabs
-      line-width="40px"
-      swipeable
-      :duration="0.2"
-      v-model="activeName"
-      @change="getImgList"
-    >
-      <van-tab v-for="item in ImgCategory" :title="item.title" :key="item.id">
-      </van-tab>
-    </van-tabs>
-    <!-- 全部图片区域 -->
-    <ul class="img_list">
-      <!-- 将图片数组中的数据遍历渲染到页面 -->
-      <li
-        v-for="item in getImges"
-        :key="item.id"
-        class="box"
-        @click="jumpImg(item.id)"
+    <!-- 下拉刷新 -->
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+      <!-- 标签页 -->
+      <van-tabs
+        line-width="40px"
+        swipeable
+        :duration="0.2"
+        v-model="activeName"
+        @change="getImgList"
       >
-        <van-image
-          width="100%"
-          height="300px"
-          :src="item.img_url"
-          lazy-load
-          fit="cover"
-          radius="5px"
+        <van-tab v-for="item in ImgCategory" :title="item.title" :key="item.id">
+        </van-tab>
+      </van-tabs>
+      <!-- 全部图片区域 -->
+      <ul class="img_list">
+        <!-- 将图片数组中的数据遍历渲染到页面 -->
+        <li
+          v-for="item in getImges"
+          :key="item.id"
+          class="box"
+          @click="jumpImg(item.id)"
         >
-          <template>
-            <van-loading type="spinner" color="#1989fa" />
-          </template>
-        </van-image>
-        <div class="botInfo">
-          <p>{{ item.title }}</p>
-          <p>{{ item.zhaiyao }}</p>
-        </div>
-      </li>
-    </ul>
+          <van-image
+            width="100%"
+            height="300px"
+            :src="item.img_url"
+            lazy-load
+            fit="cover"
+            radius="5px"
+          >
+            <template>
+              <van-loading type="spinner" color="#1989fa" />
+            </template>
+          </van-image>
+          <div class="botInfo">
+            <p>{{ item.title }}</p>
+            <p>{{ item.zhaiyao }}</p>
+          </div>
+        </li>
+      </ul>
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -50,8 +53,9 @@ export default {
       ImgCategory: [],
       // 获得图片数组
       getImges: [],
-      id: 0
-      // 保存图片分类
+      id: 0,
+      count: 0,
+      isLoading: false
     }
   },
   created() {
@@ -73,6 +77,9 @@ export default {
     // 获取图片信息
     async getImages(id) {
       const { data: res } = await this.$http.get(`/api/getimages/${this.id}`)
+      if (res.status !== 0) {
+        return this.$toast.fail('获取失败!')
+      }
       // 将获取的图片数据放图数组中
       this.getImges = res.message
       //   console.log(res.message)
@@ -94,6 +101,12 @@ export default {
         path: '/photo/Info/' + id,
         query: { id }
       })
+    },
+    onRefresh() {
+      setTimeout(() => {
+        this.$toast('刷新成功啦！ 你网真棒！')
+        this.isLoading = false
+      }, 500)
     }
   }
 }

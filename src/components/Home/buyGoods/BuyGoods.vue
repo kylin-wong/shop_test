@@ -78,10 +78,7 @@ export default {
     },
     skipIntroduce(id) {
       this.$router.push({
-        path: './goodsdesc',
-        query: {
-          id: id
-        }
+        path: './goodsdesc/' + id
       })
     },
     skipComment(id) {
