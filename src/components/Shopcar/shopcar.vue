@@ -13,11 +13,18 @@
           <van-button
             round
             size="mini"
-            @click="$store.state.shopId[index].num == 1 ? confirm(item) : $store.state.shopId[index].num--"
+            @click="
+              $store.state.shopId[index].num == 1
+                ? confirm(item)
+                : $store.state.shopId[index].num--
+            "
             >-</van-button
           >
           <span>{{ $store.state.shopId[index].num }}</span>
-          <van-button round size="mini" @click="$store.state.shopId[index].num++"
+          <van-button
+            round
+            size="mini"
+            @click="$store.state.shopId[index].num++"
             >+</van-button
           >
         </div>
@@ -119,9 +126,10 @@ export default {
     ...mapState(['shopId']),
     // 总价
     price() {
+      console.log(this.shopId)
       return (
         this.list.reduce((p, c, i, arr) => {
-          return p + c.sell_price * this.numList[i]
+          return p + c.sell_price * this.shopId[i].num
         }, 0) * 100
       )
     }
