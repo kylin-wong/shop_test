@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -56,7 +56,10 @@ export default {
   },
   methods: {
     ...mapMutations(['addnum', 'cutnum']),
-    add(id, index) {
+    add(id, i) {
+      console.log(this.shopId)
+      console.log(this.list)
+      console.log(id)
       this.addnum(id)
       this.getNumList()
     },
@@ -98,6 +101,8 @@ export default {
     onSubmit() {}
   },
   computed: {
+    // num
+    ...mapState(['shopId']),
     // 总价
     price() {
       return (

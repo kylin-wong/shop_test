@@ -32,9 +32,13 @@ export default {
   computed: {
     active: {
       get: function() {
+        if (this.$route.path === '/add') {
+          return '/search'
+        }
         return this.$store.state.toUrl
       },
       set: function(newval) {
+        console.log(newval)
         this.$store.commit('setToUrl', newval)
       }
     }

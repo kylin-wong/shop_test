@@ -2,11 +2,24 @@
   <div>
     <!-- 下拉刷新 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :offset="10" :immediate-check="false">
+      <van-list
+        v-model="loading"
+        :finished="finished"
+        finished-text="没有更多了"
+        @load="onLoad"
+        :offset="10"
+        :immediate-check="false"
+      >
         <!-- 主体内容 -->
         <van-grid :gutter="20" :column-num="2" border id="app">
-          <van-grid-item v-for="value in goodsAllList" :key="value.id" :to="{ path: '/buyGoods', query: { id: value.id } }">
-            <van-image :src="value.img_url" />
+          <van-grid-item
+            v-for="value in goodsAllList"
+            :key="value.id"
+            :to="{ path: '/buyGoods', query: { id: value.id } }"
+          >
+            <div class="box">
+              <van-image :src="value.img_url" />
+            </div>
             <p>{{ value.title }}</p>
             <div class="footer">
               <van-row type="flex" justify="space-around">
@@ -50,8 +63,11 @@ export default {
   methods: {
     // 获取商品列表
     async getGoodsList() {
-      const { data: res } = await this.$http.get(`/api/getgoods?pageindex=${this.curentPage}`)
+      const { data: res } = await this.$http.get(
+        `/api/getgoods?pageindex=${this.curentPage}`
+      )
       res.message.forEach(item => this.goodsAllList.push(item))
+      console.log(res)
     },
     // 刷新
     onRefresh() {
@@ -72,7 +88,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .van-pull-refresh {
   margin: 20px 0 50px;
 }
@@ -100,7 +116,11 @@ export default {
 .num {
   font-size: 12px;
 }
-#app{
-  color: #000
+#app {
+  color: #000;
+}
+.van-image__img {
+  margin-left: 50px;
+  max-height: 300px !important;
 }
 </style>
