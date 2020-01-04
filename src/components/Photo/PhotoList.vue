@@ -2,7 +2,6 @@
   <div>
     <!-- 下拉刷新 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-
       <!-- 标签页 -->
       <van-tabs
         line-width="40px"
@@ -78,6 +77,9 @@ export default {
     // 获取图片信息
     async getImages(id) {
       const { data: res } = await this.$http.get(`/api/getimages/${this.id}`)
+      if (res.status !== 0) {
+        return this.$toast.fail('获取失败!')
+      }
       // 将获取的图片数据放图数组中
       this.getImges = res.message
       //   console.log(res.message)

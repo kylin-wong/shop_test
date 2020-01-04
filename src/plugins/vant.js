@@ -31,8 +31,10 @@ import {
   Swipe,
   SwipeItem,
   PullRefresh,
-  List
+  List,
+  Field
 } from 'vant'
+Vue.use(Field)
 Vue.use(List)
 Vue.use(Swipe)
 Vue.use(SwipeItem)

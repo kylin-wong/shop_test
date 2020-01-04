@@ -5,7 +5,7 @@
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :offset="10" :immediate-check="false">
         <!-- 主体内容 -->
         <van-grid :gutter="20" :column-num="2" border id="app">
-          <van-grid-item v-for="value in goodsAllList" :key="value.id" :to="{ path: '/buyGoods', params: { id: value.id } }">
+          <van-grid-item v-for="value in goodsAllList" :key="value.id" :to="{ path: '/buyGoods', query: { id: value.id } }">
             <van-image :src="value.img_url" />
             <p>{{ value.title }}</p>
             <div class="footer">
