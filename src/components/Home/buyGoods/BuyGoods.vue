@@ -3,8 +3,8 @@
     <van-row>
       <van-col span="24" class="shop_img">
         <van-swipe :autoplay="3000">
-          <van-swipe-item v-for="(item, index) in goodsMessage" :key="index">
-            <img v-lazy="item.thumb_path" style="width: 100%;height: 100%;" />
+          <van-swipe-item v-for="(item, index) in shopImages" :key="index">
+            <img v-lazy="item.src" style="width: 100%;height: 100%;" />
           </van-swipe-item>
         </van-swipe>
       </van-col>
@@ -46,7 +46,7 @@
 export default {
   data() {
     return {
-      goodsMessage: [],
+      shopImages: [],
       shopNum: 1,
       ShopInfo: {}
     }
@@ -58,9 +58,9 @@ export default {
   methods: {
     async getshopcarlist() {
       const id = this.$route.query.id
-      const { data: res } = await this.$http.get('api/goods/getshopcarlist/' + id)
+      const { data: res } = await this.$http.get('api/getthumimages/' + id)
       if (res.status === 1) return this.$message({ message: '获取信息失败', type: 'danger', duration: 1000 })
-      this.goodsMessage = res.message
+      this.shopImages = res.message
     },
     addShopNum(event) {
       this.shopNum = event
@@ -68,7 +68,6 @@ export default {
     async getShopInfo() {
       const id = this.$route.query.id
       const { data: res } = await this.$http.get('api/goods/getinfo/' + id)
-      console.log(res)
       if (res.status === 1) return this.$message({ message: '获取信息失败', type: 'danger', duration: 1000 })
       this.ShopInfo = res.message[0]
     },
