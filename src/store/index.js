@@ -37,16 +37,19 @@ export default new Vuex.Store({
     },
     addnum(state, id) {
       console.log('====================================')
+      console.log(state.shopId)
       console.log(id)
       console.log('====================================')
-      let i = state.shopId.findIndex(item => (item.id = id))
+      let i = state.shopId.findIndex(item => item.id === id)
+      console.log(i)
       state.shopId[i].num++
+      console.log(state.shopId[i].num)
     },
     cutnum(state, id) {
       console.log('====================================')
       console.log(id)
       console.log('====================================')
-      let i = state.shopId.findIndex(item => (item.id = id))
+      let i = state.shopId.findIndex(item => item.id === id)
       state.shopId[i].num--
       console.log(state.shopId[i].num)
     }
