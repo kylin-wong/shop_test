@@ -70,8 +70,13 @@ export default {
 
       const { data: res } = await this.$http.get(`api/getnew/${id}`)
       if (res.status === 1) return false
+      let a = res.message[0].content.split('<br />')
+      res.message[0].content = a
+        .join(' ')
+        .split('&emsp;&emsp;')
+        .join(' ')
       this.DetailList = res.message
-      // console.log(this.DetailList)
+      console.log(this.DetailList)
     },
     async getMoment(id) {
       console.log(id)
@@ -145,7 +150,6 @@ h3 {
   margin: 0 15px 0 15px;
 }
 p {
-  text-indent: 2em;
   margin: 0 10px 0 10px;
 }
 .btn {
