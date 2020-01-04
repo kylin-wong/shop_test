@@ -8,13 +8,20 @@
           ref="barRef"
           @click-left="onClickLeft"
         >
-          <div v-if="$store.state.toUrl !== '/home'" class="slotbox" slot="left">
+          <div
+            v-if="$store.state.toUrl !== '/home'"
+            class="slotbox"
+            slot="left"
+          >
             <van-icon name="arrow-left" color="#fff" />返回
+          </div>
+          <div slot="right" v-if="$store.state.toUrl === '/search'">
+            <span class="add" @click="add">添加</span>
           </div>
         </van-nav-bar>
       </van-col>
     </van-row>
-    <van-row :style="{height:h}"></van-row>
+    <van-row :style="{ height: h }"></van-row>
   </div>
 </template>
 
@@ -30,6 +37,9 @@ export default {
     this.h = this.$refs.barRef.offsetHeight - 1 + 'px'
   },
   methods: {
+    add() {
+      this.$router.push('/add')
+    },
     onClickLeft() {
       this.$router.go(-1)
     }
@@ -59,7 +69,10 @@ export default {
   align-items: center;
   color: #fff;
 }
-.van-nav-bar--fixed{
+.van-nav-bar--fixed {
   z-index: 99 !important;
+}
+.add {
+  color: #fff;
 }
 </style>

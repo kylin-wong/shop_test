@@ -12,6 +12,7 @@ import GoodsList from '../components/Home/buyGoods/GoodsList.vue'
 import GoodsDesc from '../components/Home/buyGoods/GoodsDesc.vue'
 import Detail from '../components/news/detail.vue'
 import Info from '../components/Photo/Info.vue'
+import Add from '../components/Add/add.vue'
 
 // store  VUEX文件引入
 import store from '../store/index.js'
@@ -71,6 +72,10 @@ const routes = [
   {
     path: '/detail/:id',
     component: Detail
+  },
+  {
+    path: '/add',
+    component: Add
   }
 ]
 
