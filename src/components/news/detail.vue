@@ -53,7 +53,11 @@ export default {
       isShow: true,
       txt: '加载更多',
       num: 5,
-      isLoading: false
+      isLoading: false,
+      routeId: this.$route.path.substring(
+        this.$route.path.length - 2,
+        this.$route.path.length
+      )
     }
   },
   created() {
@@ -67,7 +71,7 @@ export default {
   methods: {
     async getDetailList(id) {
       console.log(id)
-
+      this.reouteId = id
       const { data: res } = await this.$http.get(`api/getnew/${id}`)
       if (res.status === 1) return false
       let a = res.message[0].content.split('<br />')
@@ -84,15 +88,19 @@ export default {
         `api/getcomments/${id}?pageindex=1`
       )
       this.comment = res.message
-      // console.log(this.comment)
+      console.log(this.comment)
     },
     async add() {
       if (this.val === '') return this.$toast('留言不能为空')
-      const { data: res } = await this.$http.post('api/postcomment/43', {
-        content: this.val
-      })
+      let params = new URLSearchParams()
+      params.append('content', this.val)
+      const { data: res } = await this.$http.post(
+        `api/postcomment/${this.routeId}`,
+        params
+      )
+      this.val = ''
       if (res.status !== 0) return this.$toast('评论提交失败!')
-      this.getMoment()
+      this.getMoment(this.routeId)
       this.$toast('评论提交成功!')
     },
     showMore() {

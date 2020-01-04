@@ -27,13 +27,25 @@ export default {
   data() {
     return {}
   },
-  created() {},
+  created() {
+    console.log(this.$route, 111)
+  },
   methods: {},
   computed: {
     active: {
       get: function() {
         if (this.$route.path === '/add') {
           return '/search'
+        }
+        if (
+          this.$route.matched[0].path === '/newlist' ||
+          this.$route.matched[0].path === '/detail/:id' ||
+          this.$route.matched[0].path === '/photo/list' ||
+          this.$route.matched[0].path === '/photo/info/:id' ||
+          this.$route.matched[0].path === '/home/goods' ||
+          this.$route.matched[0].path === '/buyGoods'
+        ) {
+          return '/home'
         }
         return this.$store.state.toUrl
       },

@@ -26,15 +26,16 @@ export default {
       if (this.vas.trim().length === 0) {
         return this.$toast.fail('请输入内容')
       }
-      let { data: res } = await this.$http.post(`api/addproduct`, {
-        name: this.vas.trim()
-      })
+      let params = new URLSearchParams()
+      params.append('name', this.vas.trim())
+      let { data: res } = await this.$http.post(`api/addproduct`, params)
       console.log(res)
       console.log(this.vas)
+      this.vas = ''
       if (res.status !== 0) {
-        this.vas = ''
         return this.$toast.fail('添加失败')
       }
+      this.$toast.success('添加成功')
     }
   }
 }

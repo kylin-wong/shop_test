@@ -13,11 +13,11 @@
           <van-button
             round
             size="mini"
-            @click="numList[index] == 1 ? confirm(item) : cut(item.id, index)"
+            @click="$store.state.shopId[index].num == 1 ? confirm(item) : $store.state.shopId[index].num--"
             >-</van-button
           >
-          <span>{{ numList[index] }}</span>
-          <van-button round size="mini" @click="add(item.id, index)"
+          <span>{{ $store.state.shopId[index].num }}</span>
+          <van-button round size="mini" @click="$store.state.shopId[index].num++"
             >+</van-button
           >
         </div>
@@ -55,13 +55,13 @@ export default {
     this.get()
   },
   methods: {
-    ...mapMutations(['addnum', 'cutnum']),
+    ...mapMutations(['addnum', 'cutnum', 'delstate']),
     add(id, i) {
       console.log(this.shopId)
       console.log(this.list)
       console.log(id)
       this.addnum(id)
-      this.getNumList()
+      // this.getNumList()
     },
     cut(id, index) {
       this.cutnum(id)
@@ -83,7 +83,11 @@ export default {
       this.list = res.message
       console.log(res)
     },
+    de(i) {
+      this.$store.commit('delstate', i)
+    },
     confirm(con) {
+      // let that = this
       this.Dialog.confirm({
         title: '标题',
         message: '确定要删除吗？'
@@ -91,7 +95,17 @@ export default {
         .then(() => {
           // on confirm
           let i = this.list.findIndex(item => item === con)
+          console.log(i)
           this.list.splice(i, 1)
+          // this.delstate(i)
+          // this.$store.commit('delstate', i)
+          // this.de(i)
+          // todo
+          this.$store.state.shopId.splice(i, 1)
+          console.log(2)
+          this.idList = this.$store.state.shopId.reduce((p, c, i, arr) => {
+            return p + ',' + c.id
+          }, '')
         })
         .catch(() => {
           // on cancel

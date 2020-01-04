@@ -21,6 +21,7 @@ Vue.component('my-footer', myFooter)
 Vue.component('my-comment', myComment)
 // 配置根路径
 axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 // 全局挂载
 Vue.prototype.$http = axios
 

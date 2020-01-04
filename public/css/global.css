@@ -8,3 +8,8 @@ p[data-v-526262ad],p[data-v-526262ad] p {
 p[data-v-a027d590] p{
   text-indent: 2em
 }
+.van-image.van-image-preview__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

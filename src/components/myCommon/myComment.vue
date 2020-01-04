@@ -50,8 +50,13 @@ export default {
     },
     async addComment() {
       const id = this.$route.query.id
-      const { data: res } = await this.$http.post(`api/postcomment/${id}`, { content: this.textValue })
+      let params = new URLSearchParams()
+      params.append('content', this.textValue)
+      const { data: res } = await this.$http.post(`api/postcomment/${id}`, params)
+      this.textValue = ''
       if (res.status === 1) return this.$message({ message: '发表评论失败', type: 'danger', duration: 1000 })
+      this.$toast.success('发表成功')
+      this.getComments()
     }
   }
 }

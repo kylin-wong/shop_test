@@ -52,6 +52,11 @@ export default new Vuex.Store({
       let i = state.shopId.findIndex(item => item.id === id)
       state.shopId[i].num--
       console.log(state.shopId[i].num)
+    },
+    delstate(state, i) {
+      state.shopId[i].splice(i, 1)
+      state.shop[i].splice(i, 1)
+      console.log(state.shopId)
     }
   },
   actions: {},

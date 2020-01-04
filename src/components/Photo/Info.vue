@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 0 5px">
+  <div style="padding: 0 5px 60px">
     <h4>{{ photoDetail.title }}</h4>
     <p>
       <span class="time"
@@ -14,7 +14,10 @@
       </li>
     </ul>
     <div class="detail-content" v-html="photoDetail.content"></div>
-    <my-comment :id="id"> </my-comment>
+    <my-comment> </my-comment>
+    <div class="spanbox">
+      <span class="span">没有更多</span>
+    </div>
   </div>
 </template>
 
@@ -108,8 +111,18 @@ ul {
     }
   }
 }
-.detail-content{
+.detail-content {
   margin: 0 10px;
-  text-indent: 2em
+  text-indent: 2em;
+}
+.spanbox {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #ccc
+}
+.span {
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
 }
 </style>
