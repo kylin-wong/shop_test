@@ -2,7 +2,11 @@
   <div>
     <van-row>
       <van-col span="24" class="shop_img">
-        <van-image :src="goodsMessage.thumb_path" width="100%" height="100%" radius="5px" />
+        <van-swipe :autoplay="3000">
+          <van-swipe-item v-for="(item, index) in shopImages" :key="index">
+            <img v-lazy="item.src" style="width: 100%;height: 100%;" />
+          </van-swipe-item>
+        </van-swipe>
       </van-col>
     </van-row>
     <van-row>
@@ -42,7 +46,7 @@
 export default {
   data() {
     return {
-      goodsMessage: {},
+      shopImages: [],
       shopNum: 1,
       ShopInfo: {}
     }
@@ -54,9 +58,9 @@ export default {
   methods: {
     async getshopcarlist() {
       const id = this.$route.query.id
-      const { data: res } = await this.$http.get('api/goods/getshopcarlist/' + id)
+      const { data: res } = await this.$http.get('api/getthumimages/' + id)
       if (res.status === 1) return this.$message({ message: '获取信息失败', type: 'danger', duration: 1000 })
-      this.goodsMessage = res.message[0]
+      this.shopImages = res.message
     },
     addShopNum(event) {
       this.shopNum = event
@@ -64,7 +68,6 @@ export default {
     async getShopInfo() {
       const id = this.$route.query.id
       const { data: res } = await this.$http.get('api/goods/getinfo/' + id)
-      console.log(res)
       if (res.status === 1) return this.$message({ message: '获取信息失败', type: 'danger', duration: 1000 })
       this.ShopInfo = res.message[0]
     },
@@ -74,10 +77,7 @@ export default {
     },
     skipIntroduce(id) {
       this.$router.push({
-        path: './goodsdesc',
-        query: {
-          id: id
-        }
+        path: './goodsdesc/' + id
       })
     },
     skipComment(id) {
@@ -96,8 +96,9 @@ export default {
 .van-col {
     padding: 15px 6px 0;
 }
-.van-image {
+.van-swipe {
     border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .van-image {
     vertical-align: middle;
