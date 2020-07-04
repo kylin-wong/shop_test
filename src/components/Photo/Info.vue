@@ -1,10 +1,10 @@
 <template>
   <div style="padding: 0 5px 60px">
+    <div>今天也是想十一的一天</div>
     <h4>{{ photoDetail.title }}</h4>
+
     <p>
-      <span class="time"
-        >发表时间: {{ photoDetail.add_time | my-date }}</span
-      >
+      <span class="time">发表时间: {{ photoDetail.add_time | my-date }}</span>
       <span class="click">点击: {{ photoDetail.click }}</span>
     </p>
     <hr />
@@ -14,7 +14,7 @@
       </li>
     </ul>
     <div class="detail-content" v-html="photoDetail.content"></div>
-    <my-comment> </my-comment>
+    <my-comment></my-comment>
     <div class="spanbox">
       <span class="span">没有更多</span>
     </div>
@@ -118,7 +118,7 @@ ul {
 .spanbox {
   display: flex;
   justify-content: center;
-  border-top: 1px solid #ccc
+  border-top: 1px solid #ccc;
 }
 .span {
   text-align: center;
